@@ -11,43 +11,7 @@ function App() {
 
   const [inputField, setInputField] = useState('');
   const [returnedMovies, setReturnedMovies] = useState([]);
-  const [nominatedMovies, setNominatedMovies] = useState([
-    {
-      "Title": "The Bourne Supremacy",
-      "Year": "2004",
-      "imdbID": "tt0372183",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-    },
-    {
-      "Title": "The Bourne Supremacy",
-      "Year": "2004",
-      "imdbID": "tt0372183",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-    },
-    {
-      "Title": "The Bourne Legacy",
-      "Year": "2012",
-      "imdbID": "tt1194173",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTc4Njk3MDM1Nl5BMl5BanBnXkFtZTcwODgyOTMxOA@@._V1_SX300.jpg"
-    },
-    {
-      "Title": "The Bourne Supremacy",
-      "Year": "2004",
-      "imdbID": "tt0372183",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-    },
-    {
-      "Title": "The Bourne Supremacy",
-      "Year": "2004",
-      "imdbID": "tt0372183",
-      "Type": "movie",
-      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-    }
-  ]);
+  const [nominatedMovies, setNominatedMovies] = useState([]);
 
   const getState = () => {
     console.log(returnedMovies);
@@ -105,30 +69,36 @@ function App() {
         </div>
       }
 
+      {/* ----- Remove searchbox when # of nominated movies hits 5 -----*/}
+      { (nominatedMovies.length < 5) &&
+        <React.Fragment>
         { /* ----- SearchBox ----- */}
-        <form onSubmit={ (event) => {
-          event.preventDefault();
-          runOmdbApi();
-        }}>
+          <form onSubmit={ (event) => {
+            event.preventDefault();
+            runOmdbApi();
+          }}>
 
-          <div>Please nominate 5 different movies</div>
+            <div>Please nominate 5 different movies</div>
 
-          <TextField type='text'
-            id='searchfield' 
-            value={inputField}
-            placeholder='Search Movies'
-            prefix={<Icon source={SearchMinor} color="inkLighter" />}
-            onChange={(e) => { setInputField(e)}}>
-          </TextField>
-        </form>
+            <TextField type='text'
+              id='searchfield' 
+              value={inputField}
+              placeholder='Search Movies'
+              prefix={<Icon source={SearchMinor} color="inkLighter" />}
+              onChange={(e) => { setInputField(e)}}>
+            </TextField>
+          </form>
 
-        { /* ----- Movies Returned from API Call ----- */}
-        <MovieList
-          movieArray={ returnedMovies }
-          nominateMovie={ nominateMovie }
-        />
+          { /* ----- Movies Returned from API Call ----- */}
+          <MovieList
+            movieArray={ returnedMovies }
+            nominateMovie={ nominateMovie }
+          />
 
-        <button onClick={getState}>Get State</button>
+          <button onClick={getState}>Get State</button>
+        </React.Fragment>
+      }
+
       </div>
   );
 }
