@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './NominationList.css'
 import { CircleCancelMajorTwotone } from '@shopify/polaris-icons';
-import { Icon } from '@shopify/polaris';
+import { Icon, Heading } from '@shopify/polaris';
 
 const NominationList = (props) => {
 
@@ -25,12 +25,23 @@ const NominationList = (props) => {
           movies.map((movie, i) => {
             return <div key={i} className='nomination__moviecard'>
                 <div className='nomination__poster'>
-                  <img 
-                    alt={movie.Title}
-                    src={movie.Poster} 
-                    width='160'
-                    height='240'
-                    />
+
+                  {/* If no movie poster, return generic poster */}
+                  { movie.Poster === 'N/A'
+
+                    ? <div className='nomination__poster-blank'>
+                        <Heading>{ movie.Title}</Heading>
+                      </div>
+
+                    : <img 
+                        alt={movie.Title}
+                        src={movie.Poster} 
+                        width='160'
+                        height='240'
+                        />
+
+                  }
+
                   <div className='nomination__remove-button'
                     onClick={ () => {props.removeNomination(i)} }
                     onMouseEnter={() => { setHoveredIcon(i) }}
