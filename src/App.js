@@ -95,6 +95,7 @@ function App() {
           { /* ----- Movies Returned from API Call ----- */}
           <MovieList
             movieArray={ returnedMovies }
+            nominatedMovies={ nominatedMovies}
             nominateMovie={ nominateMovie }
             awaitingApiResponse={ awaitingApiResponse }
           />

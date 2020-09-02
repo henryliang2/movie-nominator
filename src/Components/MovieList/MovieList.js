@@ -1,9 +1,13 @@
 import React from 'react';
-import { Button, Spinner} from '@shopify/polaris';
+import { Button, Spinner } from '@shopify/polaris';
 import MovieCard from './../MovieCard/MovieCard'
 import './MovieList.css'
 
 const MovieList = (props) => {
+
+  const nominatedMovieTitles = props.nominatedMovies.map((movie, i) => {
+    return movie.Title;
+  })
 
   return (
     <div className='movielist__container'>
@@ -29,12 +33,19 @@ const MovieList = (props) => {
                   { movie.Title }<br />
                   { `(${movie.Year})` }
                 </p>
-                <Button
-                  className='moviecard__nominate-button Polaris-Button'
-                  onClick={() => {props.nominateMovie(i)}}
-                  size='slim'>
-                  Nominate
-                </Button>
+
+                {/* display nominate button only if not already nominated */}
+                { nominatedMovieTitles.includes(movie.Title)
+
+                  ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
+
+                  : <Button
+                      className='moviecard__nominate-button Polaris-Button'
+                      onClick={() => {props.nominateMovie(i)}}
+                      size='slim'>
+                      Nominate
+                    </Button> }
+
               </div>
             </div> )})
       }

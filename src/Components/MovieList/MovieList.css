@@ -49,6 +49,11 @@
   display: block;
 }
 
+.moviecard__nominate-unable {
+  font-weight: bold;
+  color: white;
+}
+
 .movielist__container {
   display: flex;
   flex-wrap: wrap;
