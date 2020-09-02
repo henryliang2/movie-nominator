@@ -10,9 +10,19 @@ const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 function App() {
 
   const [inputField, setInputField] = useState('');
-  const [returnedMovies, setReturnedMovies] = useState([]);
+
+  // an array of movies returned from API call
+  const [returnedMovies, setReturnedMovies] = useState([]); 
+
+  // an array of movies that the user has nominated
   const [nominatedMovies, setNominatedMovies] = useState([]);
+
+  // true if API has been called and no response received yet, false otherwise
   const [awaitingApiResponse, setAwaitingApiResponse] = useState(false);
+
+  // boolean; true if at least one movie returned from query, false otherwise
+  // initial state is true so that 'no movies found' is not showing
+  const [moviesReturned, setMoviesReturned] = useState(true);
 
   const getState = () => {
     console.log(returnedMovies);
@@ -24,8 +34,11 @@ function App() {
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
     .then(result => {
-      if(result.Response) {
-        setReturnedMovies(result.Search) 
+      if(result.Response === 'True') {
+        setReturnedMovies(result.Search);
+        setMoviesReturned(true); 
+      } else {
+        setMoviesReturned(false);
       }
     })
     .then(setAwaitingApiResponse(false))
@@ -93,13 +106,19 @@ function App() {
           </form>
 
           { /* ----- Movies Returned from API Call ----- */}
-          <MovieList
-            movieArray={ returnedMovies }
-            nominatedMovies={ nominatedMovies}
-            nominateMovie={ nominateMovie }
-            awaitingApiResponse={ awaitingApiResponse }
-          />
+          { moviesReturned
 
+            ? <MovieList
+                movieArray={ returnedMovies }
+                nominatedMovies={ nominatedMovies}
+                nominateMovie={ nominateMovie }
+                awaitingApiResponse={ awaitingApiResponse }
+              />
+
+            : <div className='movielist__search-failed'>No movies found with that search =(</div>
+
+          }
+          
           <button onClick={getState}>Get State</button>
         </React.Fragment>
       }

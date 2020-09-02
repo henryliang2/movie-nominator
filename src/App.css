@@ -36,3 +36,16 @@ sup {
 #shoppies-logo {
   max-height: 280px;
 }
+
+.movielist__search-failed {
+  width: 100%;
+  padding: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-size: 3em;
+  color: #aaa;
+}
