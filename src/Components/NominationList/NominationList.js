@@ -13,15 +13,13 @@ const NominationList = (props) => {
           props.nominatedMovies.map((movie, i) => {
             return <div className='nomination__container'>
             
-            <div className='nomination__moviecard'><img 
+            <div className='nomination__moviecard'>
+            <img 
+              alt={movie.Title}
               src={movie.Poster} 
               width='100'
               height='150'
               /></div>
-            
-            <div className='nomination__overlay'>
-            x
-            </div>
 
             </div>
           })
