@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
 .main__container {
-  padding: 100px;
+  margin: 60px;
 }
 
 .welcome__container {
@@ -35,6 +35,11 @@ sup {
 
 #shoppies-logo {
   max-height: 280px;
+}
+
+#searchfield {
+  max-width: 600px;
+  margin: auto;
 }
 
 .movielist__search-failed {

@@ -6,10 +6,16 @@
   then the submit button takes up two */
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
+  margin-bottom: 24px;
 }
 
 .nomination__moviecard {
   text-align: center;
+}
+
+.nomination__moviecard > p {
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 500;
 }
 
 .nomination__poster {
@@ -74,4 +80,11 @@
 
 .nomination__submit-button:hover { 
   background-color: #6c4794;
+}
+
+.nomination__header-title {
+  padding: 12px;
+  font-size: 3em;
+  font-weight: 500;
+  margin-bottom: 36px;
 }

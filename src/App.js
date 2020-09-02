@@ -24,11 +24,6 @@ function App() {
   // initial state is true so that 'no movies found' is not showing
   const [moviesReturned, setMoviesReturned] = useState(true);
 
-  const getState = () => {
-    console.log(returnedMovies);
-    console.log(nominatedMovies)
-  }
-
   const runOmdbApi = () => {
     setAwaitingApiResponse(true);
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
@@ -81,6 +76,8 @@ function App() {
           <div className='welcome__subtext'>
             <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly!</p>
             <p>Which films made you laugh or cry (of happiness)?</p>
+            <p><br /></p>
+            <p>Please nominate five movies.</p>
           </div>
         </div>
       }
@@ -89,15 +86,13 @@ function App() {
       { (nominatedMovies.length < 5) &&
         <React.Fragment>
         { /* ----- SearchBox ----- */}
-          <form onSubmit={ (event) => {
-            event.preventDefault();
-            runOmdbApi();
-          }}>
+          <form id='searchfield'
+            onSubmit={ (event) => {
+              event.preventDefault();
+              runOmdbApi(); }}
+            >
 
-            <div>Please nominate 5 different movies</div>
-
-            <TextField type='text'
-              id='searchfield' 
+            <TextField type='text' 
               value={inputField}
               placeholder='Search Movies'
               prefix={<Icon source={SearchMinor} color="inkLighter" />}
@@ -116,10 +111,8 @@ function App() {
               />
 
             : <div className='movielist__search-failed'>No movies found with that search =(</div>
-
           }
-          
-          <button onClick={getState}>Get State</button>
+
         </React.Fragment>
       }
 

@@ -17,7 +17,7 @@ const NominationList = (props) => {
 
   return (
     <React.Fragment>
-      <div>My Nominations</div>
+      <div className='nomination__header-title'>My Nominations</div>
 
       <div className='nomination__container'>
       
