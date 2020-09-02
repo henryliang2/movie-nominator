@@ -17,8 +17,7 @@ const MovieList = (props) => {
                 posterUrl={movie.Poster}
               />
               
-              <div 
-                className='moviecard__overlay'>
+              <div className='moviecard__overlay'>
                 <p className='moviecard__movie-title'>
                   { movie.Title }<br />
                   { `(${movie.Year})` }

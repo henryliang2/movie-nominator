@@ -1,0 +1,22 @@
+.nomination__container {
+
+  display: inline-block;
+  position: relative;
+}
+
+.nomination__overlay {
+  width: 100px;
+  height: 150px;
+  display: flex;
+
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+
+  background-color:rgba(0, 0, 0, 0.7);
+}
+
+img {
+  display: inline;
+}
