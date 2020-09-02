@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
-.container__footer {
+.footer__container {
   margin-left: 24px;
   margin-bottom: 24px;
+  max-width: 200px;
 }
 
 .footer {
@@ -10,7 +11,7 @@
   font-size: 1.2em;
   line-height: 1.4em;
   text-decoration: none;
-  display: block;
+  display: inline-block;
 }
 
 .footer__title {

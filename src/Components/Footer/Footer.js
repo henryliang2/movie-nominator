@@ -9,7 +9,7 @@ const Footer = () => {
   ]
 
   return (
-    <div className='container__footer'>
+    <div className='footer__container'>
       <p className='footer footer__title'>Packages Used</p>
       { links.map(link => {
           return (

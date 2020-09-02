@@ -1,13 +1,14 @@
 import React from 'react';
 import MovieCard from './../MovieCard/MovieCard'
+import { Card } from '@shopify/polaris';
 import './MovieList.css'
 
 const MovieList = (props) => {
 
   return (
-    <div className='container__moviecards'>
+    <div className='moviecard__container'>
       {
-        props.returnedMovies.map((movie, i) => {
+        props.movies.map((movie, i) => {
           return (
             <div className='moviecard'>
               <MovieCard key={i}
@@ -17,13 +18,14 @@ const MovieList = (props) => {
               />
               
               <div 
-                className='moviecard__overlay'
-                onMouseOver={(e) => {console.log(e)}}>
+                className='moviecard__overlay'>
                 <p className='moviecard__movie-title'>
                   { movie.Title }<br />
                   { `(${movie.Year})` }
                 </p>
-                <button className='moviecard__nominate-button Polaris-Button'>
+                <button 
+                  className='moviecard__nominate-button Polaris-Button'
+                  onClick={() => {props.nominateMovie(i)}}>
                   Nominate
                 </button>
               </div>
