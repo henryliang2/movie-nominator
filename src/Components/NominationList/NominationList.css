@@ -4,7 +4,7 @@
   display: grid;
   /* Each movie card poster takes up unit of width, 
   then the submit button takes up two */
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
 }
 
@@ -51,17 +51,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 200px;
 }
 
 .nomination__submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #41295a;
   border-radius: 12px;
-  padding: 24px;
 
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 500;
   font-size: 1.6em;
   color: white;
+
+  min-height: 60px;
+  min-width: 400px;
 
   cursor: pointer;
 }

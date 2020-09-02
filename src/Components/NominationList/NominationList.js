@@ -58,14 +58,14 @@ const NominationList = (props) => {
           })
         }
 
-        { /* if there are 5 nominations, show submit button */ }
-        { ( movies.length === 5 ) && 
-          <div className='nomination__submit-container'>
-            <div className='nomination__submit-button'>Submit Nominations</div>
-          </div>
-        }
-
       </div>
+
+      { /* if there are 5 nominations, show submit button */ }
+      { ( movies.length === 5 ) && 
+        <div className='nomination__submit-container'>
+          <div className='nomination__submit-button'>Submit Nominations</div>
+        </div>
+      }
 
     </React.Fragment>
     );
