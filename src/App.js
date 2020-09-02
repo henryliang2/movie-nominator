@@ -12,6 +12,7 @@ function App() {
   const [inputField, setInputField] = useState('');
   const [returnedMovies, setReturnedMovies] = useState([]);
   const [nominatedMovies, setNominatedMovies] = useState([]);
+  const [awaitingApiResponse, setAwaitingApiResponse] = useState(false);
 
   const getState = () => {
     console.log(returnedMovies);
@@ -19,6 +20,7 @@ function App() {
   }
 
   const runOmdbApi = () => {
+    setAwaitingApiResponse(true);
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
     .then(result => {
@@ -26,6 +28,7 @@ function App() {
         setReturnedMovies(result.Search) 
       }
     })
+    .then(setAwaitingApiResponse(false))
     setInputField('');
   }
 
@@ -93,6 +96,7 @@ function App() {
           <MovieList
             movieArray={ returnedMovies }
             nominateMovie={ nominateMovie }
+            awaitingApiResponse={ awaitingApiResponse }
           />
 
           <button onClick={getState}>Get State</button>
