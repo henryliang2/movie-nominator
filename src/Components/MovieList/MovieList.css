@@ -1,0 +1,8 @@
+.moviecard {
+  display: inline-block;
+}
+
+.container__moviecards {
+  display: flex;
+  flex-wrap: wrap;
+}
