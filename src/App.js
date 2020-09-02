@@ -40,11 +40,15 @@ function App() {
       <div className='main__container'>
 
         <div className='welcome__container'>
+          <img 
+            id='shoppies-logo' 
+            alt='Shoppies Award Logo' 
+            src={process.env.PUBLIC_URL + 'award_logo.svg'} />
           <div className='welcome__title'>It's Time for Nominations!</div>
           <div className='welcome__subtext'>
-            <p>The annual Shoppies<sup>TM</sup> awards are on the horizon!</p>
-            <p>You may choose up to five 
-            movies to nominate this year.</p>
+            <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly!</p>
+            <p>Please choose five of your favourite
+            movies to nominate for the awards.</p>
           </div>
         </div>
 
