@@ -6,12 +6,12 @@ import './MovieList.css'
 const MovieList = (props) => {
 
   return (
-    <div className='moviecard__container'>
+    <div className='movielist__container'>
       {
         props.movieArray.map((movie, i) => {
           return (
-            <div className='moviecard'>
-              <MovieCard key={i}
+            <div key={i} className='moviecard__container'>
+              <MovieCard
                 title={movie.Title}
                 year={movie.Year}
                 posterUrl={movie.Poster}

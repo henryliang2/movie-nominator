@@ -33,7 +33,6 @@ function App() {
     if ( nominatedMovies.length >= 5 ) {
       return null
     }
-
     setNominatedMovies(prevState => {
       return [...prevState, returnedMovies[idx]]
     });
@@ -41,18 +40,24 @@ function App() {
     setReturnedMovies([]);
   } 
 
+  const removeNomination = (idx) => {
+    let updatedNominationList = Object.assign([], nominatedMovies);
+    updatedNominationList.splice(idx, 1);
+    setNominatedMovies(updatedNominationList);
+  }
+
   return (
       <div className='main__container'>
 
       { (nominatedMovies.length > 0 ) 
 
         ? <NominationList 
-          nominatedMovies={nominatedMovies}
+          nominatedMovies={ nominatedMovies }
+          removeNomination={ removeNomination }
         />
 
         : <div className='welcome__container'>
-          <img 
-            id='shoppies-logo' 
+          <img id='shoppies-logo' 
             alt='Shoppies Award Logo' 
             src={process.env.PUBLIC_URL + 'award_logo.svg'} />
           <div className='welcome__title'>It's Time for Nominations!</div>

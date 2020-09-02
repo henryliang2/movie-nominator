@@ -1,22 +1,26 @@
 .nomination__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+  flex-wrap: wrap;
+}
 
-  display: inline-block;
+.nomination__moviecard {
+  text-align: center;
+}
+
+.nomination__poster {
   position: relative;
+  display: inline-block;
+  margin-bottom: 0;
 }
 
-.nomination__overlay {
-  width: 100px;
-  height: 150px;
-  display: flex;
-
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-
-  background-color:rgba(0, 0, 0, 0.7);
-}
-
-img {
+.nomination__poster > img {
   display: inline;
+  margin: 0;
+}
+
+.nomination__remove-button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
 }
