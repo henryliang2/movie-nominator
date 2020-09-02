@@ -1,6 +1,6 @@
 import React from 'react';
+import { Button } from '@shopify/polaris';
 import MovieCard from './../MovieCard/MovieCard'
-import { Card } from '@shopify/polaris';
 import './MovieList.css'
 
 const MovieList = (props) => {
@@ -8,7 +8,7 @@ const MovieList = (props) => {
   return (
     <div className='moviecard__container'>
       {
-        props.movies.map((movie, i) => {
+        props.movieArray.map((movie, i) => {
           return (
             <div className='moviecard'>
               <MovieCard key={i}
@@ -23,11 +23,12 @@ const MovieList = (props) => {
                   { movie.Title }<br />
                   { `(${movie.Year})` }
                 </p>
-                <button 
+                <Button
                   className='moviecard__nominate-button Polaris-Button'
-                  onClick={() => {props.nominateMovie(i)}}>
+                  onClick={() => {props.nominateMovie(i)}}
+                  size='large'>
                   Nominate
-                </button>
+                </Button>
               </div>
             </div> )})
       }

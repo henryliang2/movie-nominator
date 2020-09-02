@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { TextField, DisplayText } from '@shopify/polaris';
+import React, { useState } from 'react';
+import { TextField, Icon } from '@shopify/polaris';
+import {SearchMinor} from '@shopify/polaris-icons';
 import MovieList from './Components/MovieList/MovieList';
 import './App.css';
 
@@ -17,9 +18,14 @@ function App() {
   }
 
   const runOmdbApi = () => {
-    fetch(`http://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}`)
+    fetch(`http://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
-    .then(result => { setReturnedMovies(result.Search) });
+    .then(result => { 
+      console.log(result.Response)
+      if(result.Response) {
+        setReturnedMovies(result.Search) 
+      }
+    });
     setInputField('');
   }
 
@@ -33,8 +39,14 @@ function App() {
   return (
       <div className='main__container'>
 
-        {/* ----- Title ----- */}
-        <DisplayText size='extraLarge'>Nominations</DisplayText>
+        <div className='welcome__container'>
+          <div className='welcome__title'>It's Time for Nominations!</div>
+          <div className='welcome__subtext'>
+            <p>The annual Shoppies<sup>TM</sup> awards are on the horizon!</p>
+            <p>You may choose up to five 
+            movies to nominate this year.</p>
+          </div>
+        </div>
 
         { /* ----- SearchBox ----- */}
         <form onSubmit={ (event) => {
@@ -45,16 +57,16 @@ function App() {
           <TextField type='text'
             id='searchfield' 
             value={inputField}
-            placeholder='Search ..'
+            placeholder='Search Movies'
+            prefix={<Icon source={SearchMinor} color="inkLighter" />}
             onChange={(e) => { setInputField(e)}}>
           </TextField>
         </form>
 
         { /* ----- Movie Search List ----- */}
         <MovieList
-          listType={'search'}
-          movies={ returnedMovies }
-          nominateMovie={ nominateMovie}
+          movieArray={ returnedMovies }
+          nominateMovie={ nominateMovie }
         />
 
         <button onClick={getState}>Get State</button>
