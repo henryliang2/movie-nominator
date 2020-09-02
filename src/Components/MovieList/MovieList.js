@@ -25,7 +25,7 @@ const MovieList = (props) => {
                 <Button
                   className='moviecard__nominate-button Polaris-Button'
                   onClick={() => {props.nominateMovie(i)}}
-                  size='large'>
+                  size='small'>
                   Nominate
                 </Button>
               </div>

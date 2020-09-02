@@ -11,8 +11,8 @@
   top: 20px;
   left: 20px;
 
-  width: 200px;
-  height: 300px;
+  width: 120px;
+  height: 180px;
 
   background-color:rgba(0, 0, 0, 0.7);
 
@@ -38,7 +38,7 @@
 .moviecard__movie-title {
   display: block;
   font-family: 'Roboto', 'Arial', 'sans-serif';
-  font-size: 1.6em;
+  font-size: 1.2em;
   line-height: 1.1em;
   color: white;
   margin-bottom: 20px;

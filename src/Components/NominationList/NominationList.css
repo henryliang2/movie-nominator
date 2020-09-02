@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 .nomination__container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+  /* Each movie card poster takes up unit of width, 
+  then the submit button takes up two */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
   flex-wrap: wrap;
 }
 
@@ -23,4 +27,32 @@
   position: absolute;
   top: -8px;
   right: -8px;
+  cursor: pointer;
+}
+
+.nomination__remove-button:active {
+  top: -4px;
+}
+
+.nomination__submit-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nomination__submit-button {
+  background-color: #41295a;
+  border-radius: 12px;
+  padding: 24px;
+
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 500;
+  font-size: 1.6em;
+  color: white;
+
+  cursor: pointer;
+}
+
+.nomination__submit-button:hover { 
+  background-color: #6c4794;
 }

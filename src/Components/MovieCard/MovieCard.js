@@ -17,8 +17,8 @@ const MovieCard = (props) => {
     return (
       <img alt={ props.title }
         src={ props.posterUrl }
-        width='200px'
-        height='300px'
+        width='120px'
+        height='180px'
       />
     );
     

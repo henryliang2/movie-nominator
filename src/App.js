@@ -11,7 +11,43 @@ function App() {
 
   const [inputField, setInputField] = useState('');
   const [returnedMovies, setReturnedMovies] = useState([]);
-  const [nominatedMovies, setNominatedMovies] = useState([]);
+  const [nominatedMovies, setNominatedMovies] = useState([
+    {
+      "Title": "The Bourne Supremacy",
+      "Year": "2004",
+      "imdbID": "tt0372183",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Bourne Supremacy",
+      "Year": "2004",
+      "imdbID": "tt0372183",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Bourne Legacy",
+      "Year": "2012",
+      "imdbID": "tt1194173",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTc4Njk3MDM1Nl5BMl5BanBnXkFtZTcwODgyOTMxOA@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Bourne Supremacy",
+      "Year": "2004",
+      "imdbID": "tt0372183",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Bourne Supremacy",
+      "Year": "2004",
+      "imdbID": "tt0372183",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYTIyMDFmMmItMWQzYy00MjBiLTg2M2UtM2JiNDRhOWE4NjBhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+    }
+  ]);
 
   const getState = () => {
     console.log(returnedMovies);
