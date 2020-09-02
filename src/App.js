@@ -42,6 +42,7 @@ function App() {
 
   const removeNomination = (idx) => {
     let updatedNominationList = Object.assign([], nominatedMovies);
+    console.log('object.assign', updatedNominationList)
     updatedNominationList.splice(idx, 1);
     setNominatedMovies(updatedNominationList);
   }
