@@ -1,5 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .moviecard {
   display: inline-block;
+  position: relative;
+}
+
+.moviecard__overlay {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+
+  width: 200px;
+  height: 300px;
+
+  background-color:rgba(0, 0, 0, 0.7);
+
+  display: flex; /* change to flex on hover */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;
+
+}
+
+.moviecard__overlay:hover {
+  opacity: 1.0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.moviecard__movie-title {
+  display: block;
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-size: 1.6em;
+  line-height: 1.1em;
+  color: white;
+  margin-bottom: 20px;
+  padding: 12px;
+}
+
+.moviecard__nominate-button {
+  display: block;
 }
 
 .container__moviecards {

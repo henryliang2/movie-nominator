@@ -10,9 +10,6 @@ function App() {
   const [inputField, setInputField] = useState('');
   const [returnedMovies, setReturnedMovies] = useState([])
 
-  useEffect(() => {
-  }, [])
-
   const getState = () => {
     console.log(returnedMovies)
   }

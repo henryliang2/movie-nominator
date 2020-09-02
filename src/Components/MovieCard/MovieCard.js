@@ -12,15 +12,19 @@ const MovieCard = (props) => {
       </div>
     );
 
+  } else if ( props.posterUrl ) {
+
+    return (
+      <img alt={ props.title }
+        src={ props.posterUrl }
+        width='200px'
+        height='300px'
+      />
+    );
+    
   }
 
-  return (
-    <img alt={ props.title }
-      src={ props.posterUrl }
-      width='200px'
-      height='300px'
-    />
-  );
+  
 }
 
 export default MovieCard;

@@ -15,9 +15,19 @@ const MovieList = (props) => {
                 year={movie.Year}
                 posterUrl={movie.Poster}
               />
-            </div>
-          );
-        })
+              
+              <div 
+                className='moviecard__overlay'
+                onMouseOver={(e) => {console.log(e)}}>
+                <p className='moviecard__movie-title'>
+                  { movie.Title }<br />
+                  { `(${movie.Year})` }
+                </p>
+                <button className='moviecard__nominate-button Polaris-Button'>
+                  Nominate
+                </button>
+              </div>
+            </div> )})
       }
     </div>
   );
