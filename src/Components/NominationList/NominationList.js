@@ -118,7 +118,7 @@ const NominationList = (props) => {
                   target='_blank' rel="noopener noreferrer"><LinkedIn style={{ fontSize: 48 }}/></a>
                 <a href='https://github.com/henryliang2' 
                   target='_blank' rel="noopener noreferrer"><GitHub style={{ fontSize: 48 }}/></a>
-                <a href='mailto:henry@whatpharmacistsdo.org'><Email style={{ fontSize: 48 }}/></a>
+                <a href='mailto:henryliang@alumni.ubc.ca'><Email style={{ fontSize: 48 }}/></a>
 
               </div>
 
