@@ -21,13 +21,21 @@ const NominationList = (props) => {
     setMovies(props.nominatedMovies)
   }, [props.nominatedMovies])
 
+  /* 
+  * this page houses all of the nominations
+  */
   if (nominationsSubmitted === false) {
 
     return (
       <React.Fragment>
-        <div className='nomination__header-title'>
-          { props.nominatedMovies.length < 5 ? 'My Nominations' : 'Nomination Process Complete!'}
-        </div>
+        <div className='nomination__header'>
+          { props.nominatedMovies.length < 5 
+            ? 'My Nominations' 
+            : <img alt='Final Nominations' 
+                className='nomination__ribbon-final' 
+                src={process.env.PUBLIC_URL + 'ribbon.svg'} /> 
+          }
+        </div> 
 
         <div className='nomination__container'>
         
@@ -73,13 +81,17 @@ const NominationList = (props) => {
           <div className='nomination__submit-container'>
             <div onClick={() => { setNominationsSubmitted(true) 
               }} className='nomination__submit-button' >
-              Continue →</div>
+              Submit →</div>
           </div>
         }
 
       </React.Fragment>
       );
-    
+
+
+    /* 
+    * this page appears after user nominates 5 movies and submits them
+    */
     } else if (nominationsSubmitted === true) {
 
       return <React.Fragment>
@@ -112,7 +124,6 @@ const NominationList = (props) => {
                 target='_blank' rel="noopener noreferrer">JSong Fitness</a></li>
             </ul>
 
-            <p>Below are links to my personal accounts:</p>
               <div className='endgame__buttons'>
                 <a href='https://linkedin.com/in/henryliang2' 
                   target='_blank' rel="noopener noreferrer"><LinkedIn style={{ fontSize: 48 }}/></a>

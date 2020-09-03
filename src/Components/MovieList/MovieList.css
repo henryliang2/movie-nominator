@@ -52,6 +52,7 @@
 .movielist__container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .movielist___loading-spinner {

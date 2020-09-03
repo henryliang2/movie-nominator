@@ -5,7 +5,6 @@
   /* Each movie card poster takes up unit of width, 
   then the submit button takes up two */
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  flex-wrap: wrap;
   margin-bottom: 24px;
 }
 
@@ -18,6 +17,19 @@
   font-weight: 500;
   color: white;
 }
+
+@media only screen and (max-width: 900px) {
+  .nomination__container { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nomination__moviecard {
+    margin: 12px 24px;
+  }
+}
+
 
 .nomination__poster {
   position: relative;
@@ -53,7 +65,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 40px;
+  padding-top: 24px;
+  padding-bottom: 20px;
 }
 
 .nomination__submit-button {
@@ -79,12 +92,19 @@
   background-color: #ccc;
 }
 
-.nomination__header-title {
-  padding: 12px;
+.nomination__header {
+  display: block;
+  padding: 24px;
   font-size: 3em;
   font-weight: 500;
   margin-bottom: 36px;
   color: white;
+}
+
+.nomination__ribbon-final { /* image (svg) */
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
 }
 
 .endgame__container {
