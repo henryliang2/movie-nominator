@@ -104,15 +104,20 @@ const NominationList = (props) => {
             <p>Please check out some of my other personal projects below:</p>
 
             <ul>
-              <li><a href='https://color-cluster.netlify.app/' target='_blank'>Color Cluster</a></li>
-              <li><a href='http://whatpharmacistsdo.org/' target='_blank'>WhatPharmacistsDo</a></li>
-              <li><a href='https://www.jsongfitness.com/' target='_blank'>JSong Fitness</a></li>
+              <li><a href='https://color-cluster.netlify.app/' 
+                target='_blank' rel="noopener noreferrer">Color Cluster</a></li>
+              <li><a href='http://whatpharmacistsdo.org/' 
+                target='_blank' rel="noopener noreferrer">WhatPharmacistsDo</a></li>
+              <li><a href='https://www.jsongfitness.com/' 
+                target='_blank' rel="noopener noreferrer">JSong Fitness</a></li>
             </ul>
 
             <p>Below are links to my personal accounts:</p>
               <div className='endgame__buttons'>
-                <a href='https://linkedin.com/in/henryliang2' target='_blank'><LinkedIn style={{ fontSize: 48 }}/></a>
-                <a href='https://github.com/henryliang2' target='_blank'><GitHub style={{ fontSize: 48 }}/></a>
+                <a href='https://linkedin.com/in/henryliang2' 
+                  target='_blank' rel="noopener noreferrer"><LinkedIn style={{ fontSize: 48 }}/></a>
+                <a href='https://github.com/henryliang2' 
+                  target='_blank' rel="noopener noreferrer"><GitHub style={{ fontSize: 48 }}/></a>
                 <a href='mailto:henry@whatpharmacistsdo.org'><Email style={{ fontSize: 48 }}/></a>
 
               </div>
