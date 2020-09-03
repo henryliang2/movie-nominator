@@ -118,7 +118,7 @@ const NominationList = (props) => {
             <ul>
               <li><a href='https://color-cluster.netlify.app/' 
                 target='_blank' rel="noopener noreferrer">Color Cluster</a></li>
-              <li><a href='http://whatpharmacistsdo.org/' 
+              <li><a href='https://whatpharmacistsdo.org/' 
                 target='_blank' rel="noopener noreferrer">WhatPharmacistsDo</a></li>
               <li><a href='https://www.jsongfitness.com/' 
                 target='_blank' rel="noopener noreferrer">JSong Fitness</a></li>
