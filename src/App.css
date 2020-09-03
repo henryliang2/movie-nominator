@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
+a, a:visited {
+  text-decoration: none;
+}
+
 .layout__container:first-of-type {
   border: 1px solid #41295a;
   background: #41295a;  /* fallback for old browsers */

@@ -67,6 +67,7 @@ function App() {
             ? <NominationList 
               nominatedMovies={ nominatedMovies }
               removeNomination={ removeNomination }
+              setNominatedMovies={ setNominatedMovies }
             />
 
             : <div className='welcome__container'>

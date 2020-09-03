@@ -4,8 +4,10 @@ import './Footer.css'
 const Footer = () => {
 
   const links = [
-    ['@shopify/polaris', 'https://polaris.shopify.com/'],
-    ['OMDb API', 'http://www.omdbapi.com/']
+    ['shopify/polaris', 'https://polaris.shopify.com/'],
+    ['material-ui/icons', 'https://material-ui.com/'],
+    ['OMDb API', 'http://www.omdbapi.com/'],
+    ['react-confetti', 'https://www.npmjs.com/package/react-confetti'],
   ]
 
   return (
@@ -22,6 +24,8 @@ const Footer = () => {
             </a>
           );
         }) }
+
+      <br/>
     </div>
   );
 }

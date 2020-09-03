@@ -48,10 +48,6 @@
   cursor: pointer;
 }
 
-.nomination__remove-button:active {
-  top: -4px;
-}
-
 .nomination__submit-container {
   display: flex;
   align-items: center;
@@ -87,4 +83,42 @@
   font-weight: 500;
   margin-bottom: 36px;
   color: white;
+}
+
+.endgame__container {
+  display: flex;
+  flex-direction: column;
+  padding: 120px;
+  color: white;
+}
+
+.endgame__container > p, ul {
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 300;
+  font-size: 1.6em;
+  line-height: 1.4em;
+  list-style-type: square;
+}
+
+li > a, .endgame__buttons > a {
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  cursor: pointer;
+}
+
+li > a:hover, .endgame__buttons > a:hover {
+  color: violet;
+}
+
+.endgame__container > p:first-of-type {
+  margin-top: 24px;
+}
+
+.endgame__buttons {
+  margin: auto;
+  max-width: 400px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-around;
 }
