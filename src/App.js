@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Icon } from '@shopify/polaris';
+import { TextField, Icon, DisplayText } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 import MovieList from './Components/MovieList/MovieList';
 import NominationList from './Components/NominationList/NominationList'
@@ -59,64 +59,73 @@ function App() {
   }
 
   return (
-      <div className='main__container'>
+    <React.Fragment>
+      <div className='layout__container'>
+        <div className='layout__section'>
+          { (nominatedMovies.length > 0 ) 
 
-      { (nominatedMovies.length > 0 ) 
+            ? <NominationList 
+              nominatedMovies={ nominatedMovies }
+              removeNomination={ removeNomination }
+            />
 
-        ? <NominationList 
-          nominatedMovies={ nominatedMovies }
-          removeNomination={ removeNomination }
-        />
-
-        : <div className='welcome__container'>
-          <img id='shoppies-logo' 
-            alt='Shoppies Award Logo' 
-            src={process.env.PUBLIC_URL + 'award_logo.svg'} />
-          <div className='welcome__title'>It's Time for Nominations!</div>
-          <div className='welcome__subtext'>
-            <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly!</p>
-            <p>Which films made you laugh or cry (of happiness)?</p>
-            <p><br /></p>
-            <p>Please nominate five movies.</p>
-          </div>
-        </div>
-      }
-
-      {/* ----- Remove searchbox when # of nominated movies hits 5 -----*/}
-      { (nominatedMovies.length < 5) &&
-        <React.Fragment>
-        { /* ----- SearchBox ----- */}
-          <form id='searchfield'
-            onSubmit={ (event) => {
-              event.preventDefault();
-              runOmdbApi(); }}
-            >
-
-            <TextField type='text' 
-              value={inputField}
-              placeholder='Search Movies'
-              prefix={<Icon source={SearchMinor} color="inkLighter" />}
-              onChange={(e) => { setInputField(e)}}>
-            </TextField>
-          </form>
-
-          { /* ----- Movies Returned from API Call ----- */}
-          { moviesReturned
-
-            ? <MovieList
-                movieArray={ returnedMovies }
-                nominatedMovies={ nominatedMovies}
-                nominateMovie={ nominateMovie }
-                awaitingApiResponse={ awaitingApiResponse }
-              />
-
-            : <div className='movielist__search-failed'>No movies found with that search =(</div>
+            : <div className='welcome__container'>
+              <img id='shoppies-logo' 
+                alt='Shoppies Award Logo' 
+                src={process.env.PUBLIC_URL + 'award_logo.svg'} />
+              <div className='welcome__title'>It's Time for Nominations!</div>
+              <div className='welcome__subtext'>
+                <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly!</p>
+                <p>Which films made you laugh or cry (of happiness)?</p>
+              </div>
+            </div>
           }
-
-        </React.Fragment>
-      }
-
+        </div>
       </div>
+
+      <div className='layout__container'>
+        <div className='layout__section'>
+          {/* ----- Remove searchbox when # of nominated movies hits 5 -----*/}
+          { (nominatedMovies.length < 5) &&
+            <React.Fragment>
+
+            <div className='searchfield__header'>
+              <DisplayText> Please nominate five movies for this year's awards.</DisplayText>
+            </div>
+            
+            { /* ----- SearchBox ----- */}
+              <form id='searchfield'
+                onSubmit={ (event) => {
+                  event.preventDefault();
+                  runOmdbApi(); }}
+                >
+
+                <TextField type='text' 
+                  value={inputField}
+                  placeholder='Search Movies'
+                  prefix={<Icon source={SearchMinor} color="inkLighter" />}
+                  onChange={(e) => { setInputField(e)}}>
+                </TextField>
+              </form>
+
+              { /* ----- Movies Returned from API Call ----- */}
+              { moviesReturned
+
+                ? <MovieList
+                    movieArray={ returnedMovies }
+                    nominatedMovies={ nominatedMovies}
+                    nominateMovie={ nominateMovie }
+                    awaitingApiResponse={ awaitingApiResponse }
+                  />
+
+                : <div className='movielist__search-failed'>No movies found with that search =(</div>
+              }
+
+            </React.Fragment>
+          }
+      </div>
+    </div>
+  </React.Fragment>
   );
 }
 

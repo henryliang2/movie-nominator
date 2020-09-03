@@ -9,6 +9,14 @@ const MovieList = (props) => {
     return movie.Title;
   })
 
+  const titleClassNameArray = props.movieArray.map((movie, i) => {
+    if (movie.Title.length > 40) { 
+      return 'moviecard__movie-title-small' 
+    } else { 
+      return 'moviecard__movie-title' 
+    }
+  });
+
   return (
     <div className='movielist__container'>
 
@@ -29,7 +37,7 @@ const MovieList = (props) => {
               />
               
               <div className='moviecard__overlay'>
-                <p className='moviecard__movie-title'>
+                <p className={titleClassNameArray[i]}>
                   { movie.Title }<br />
                   { `(${movie.Year})` }
                 </p>

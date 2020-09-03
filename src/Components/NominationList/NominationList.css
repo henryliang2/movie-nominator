@@ -16,6 +16,7 @@
 .nomination__moviecard > p {
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 500;
+  color: white;
 }
 
 .nomination__poster {
@@ -33,10 +34,8 @@
   padding: 6px;
   width: 160px;
   height: 240px;
-  background: #41295a;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
+  background: white;
+  color: #41295a;
   
   display: flex;
   align-items: center;
@@ -44,8 +43,8 @@
 
 .nomination__remove-button {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -12px;
+  right: -12px;
   cursor: pointer;
 }
 
@@ -57,20 +56,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+  padding-bottom: 40px;
 }
 
 .nomination__submit-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #41295a;
+  background-color: white;
   border-radius: 12px;
 
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 500;
   font-size: 1.6em;
-  color: white;
+  color: #41295a;
 
   min-height: 60px;
   min-width: 400px;
@@ -79,7 +78,7 @@
 }
 
 .nomination__submit-button:hover { 
-  background-color: #6c4794;
+  background-color: #ccc;
 }
 
 .nomination__header-title {
@@ -87,4 +86,5 @@
   font-size: 3em;
   font-weight: 500;
   margin-bottom: 36px;
+  color: white;
 }

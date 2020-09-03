@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
-.main__container {
-  margin: 60px;
+.layout__container:first-of-type {
+  border: 1px solid #41295a;
+  background: #41295a;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #230051, #50248F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #230051, #50248F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.layout__section {
+  margin: auto;
+  margin-top: 24px;
+  max-width: 1280px;
+  text-align: center;
 }
 
 .welcome__container {
   margin: auto;
-  margin-bottom: 48px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', 'Arial', 'sans-serif';
 
   max-width: 800px;
+  color: white;
 }
 
 .welcome__title {
@@ -40,6 +51,11 @@ sup {
 #searchfield {
   max-width: 600px;
   margin: auto;
+  margin-bottom: 12px;
+}
+
+.searchfield__header {
+  margin-bottom: 24px;;
 }
 
 .movielist__search-failed {
@@ -51,6 +67,6 @@ sup {
   justify-content: center;
 
   font-family: 'Roboto', 'Arial', 'sans-serif';
-  font-size: 3em;
+  font-size: 2em;
   color: #aaa;
 }

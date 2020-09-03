@@ -1,11 +1,13 @@
-img {
+.moviecard__container > img {
   margin: 20px;
+  width: 160px;
+  height: 240px;
 }
 
 .poster__blank {
   margin: 20px;
-  width: 120px;
-  height: 180px;
+  width: 160px;
+  height: 240px;
   background: #41295a;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #2F0743, #41295a);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #2F0743, #41295a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -16,4 +18,24 @@ img {
   color: white;
 
   padding: 12px;
+}
+
+.moviecard__overlay {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+
+  width: 160px;
+  height: 240px;
+
+  background-color:rgba(0, 0, 0, 0.7);
+
+  display: flex; /* change to flex on hover */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;
 }

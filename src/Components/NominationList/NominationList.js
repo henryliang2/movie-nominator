@@ -48,13 +48,12 @@ const NominationList = (props) => {
                     onMouseLeave={() => { setHoveredIcon(-1) }}
                     >
                     <Icon source={CircleCancelMajorTwotone}
-                      color={ (hoveredIcon === i) ? 'red' : 'indigoDark' } />
+                      color={ (hoveredIcon === i) ? 'red' : 'inkLighter' } />
                   </div>
                 </div>
                 <p>{movie.Title}</p>
                 <p>({movie.Year})</p>
               </div>
-              
           })
         }
 
