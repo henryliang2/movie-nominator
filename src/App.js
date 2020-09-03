@@ -47,13 +47,11 @@ function App() {
     setNominatedMovies(prevState => {
       return [...prevState, returnedMovies[idx]]
     });
-    console.log(nominatedMovies);
     setReturnedMovies([]);
   } 
 
   const removeNomination = (idx) => {
     let updatedNominationList = Object.assign([], nominatedMovies);
-    console.log('object.assign', updatedNominationList)
     updatedNominationList.splice(idx, 1);
     setNominatedMovies(updatedNominationList);
   }

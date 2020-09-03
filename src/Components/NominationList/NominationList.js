@@ -28,7 +28,9 @@ const NominationList = (props) => {
 
     return (
       <React.Fragment>
-        <div className='nomination__header-title'>My Nominations</div>
+        <div className='nomination__header-title'>
+          { props.nominatedMovies.length < 5 ? 'My Nominations' : 'Nomination Process Complete!'}
+        </div>
 
         <div className='nomination__container'>
         
@@ -74,7 +76,7 @@ const NominationList = (props) => {
           <div className='nomination__submit-container'>
             <div onClick={() => { setNominationsSubmitted(true) 
               }} className='nomination__submit-button' >
-              Submit Nominations</div>
+              Continue →</div>
           </div>
         }
 

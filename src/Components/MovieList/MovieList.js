@@ -28,34 +28,36 @@ const MovieList = (props) => {
           </div>
 
         : props.movieArray.map((movie, i) => {
-          return (
-            <div key={i} className='moviecard__container'>
-              <MovieCard
-                title={movie.Title}
-                year={movie.Year}
-                posterUrl={movie.Poster}
-              />
-              
-              <div className='moviecard__overlay'>
-                <p className={titleClassNameArray[i]}>
-                  { movie.Title }<br />
-                  { `(${movie.Year})` }
-                </p>
+            return (
+              <div key={i} className='moviecard__container'>
+                <MovieCard
+                  title={movie.Title}
+                  year={movie.Year}
+                  posterUrl={movie.Poster}
+                />
+                
+                <div className='moviecard__overlay'>
+                  <p className={titleClassNameArray[i]}>
+                    { movie.Title }<br />
+                    { `(${movie.Year})` }
+                  </p>
 
-                {/* display nominate button only if not already nominated */}
-                { nominatedMovieTitles.includes(movie.Title)
+                  {/* display nominate button only if not already nominated */}
+                  { nominatedMovieTitles.includes(movie.Title)
 
-                  ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
+                    ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 
-                  : <Button
-                      className='moviecard__nominate-button Polaris-Button'
-                      onClick={() => {props.nominateMovie(i)}}
-                      size='slim'>
-                      Nominate
-                    </Button> }
-
-              </div>
-            </div> )})
+                    : <Button
+                        className='moviecard__nominate-button Polaris-Button'
+                        onClick={() => {props.nominateMovie(i)}}
+                        size='slim'>
+                        Nominate
+                      </Button> 
+                  }
+                </div>
+              </div> 
+            )}
+          )
       }
     </div>
   );
