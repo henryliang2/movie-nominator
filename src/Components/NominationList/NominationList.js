@@ -17,9 +17,6 @@ const NominationList = (props) => {
   // true after submitting nomations
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
 
-  const width = window.innerWidth;
-  const height= window.innerHeight;
-
   useEffect(() => {
     setMovies(props.nominatedMovies)
   }, [props.nominatedMovies])
@@ -88,10 +85,11 @@ const NominationList = (props) => {
       return <React.Fragment>
 
           <Confetti
-            width={ width - 100 }
-            height={ height - 100 }
-            opacity={ 0.8 }
-            numberOfPieces={ 50 }
+            width={ window.innerWidth - 100 }
+            height={ window.innerHeight - 100 }
+            numberOfPieces={ 400 }
+            tweenDuration={ 20000 }
+            recycle={ false }
           />
 
           <div className='endgame__container'>
