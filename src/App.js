@@ -77,7 +77,7 @@ function App() {
               <div className='welcome__title'>Nominate Your Favourite Movies!</div>
               <div className='welcome__subtext'>
                 <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly.</p>
-                <p>Which films made you laugh or cry (of happiness)?</p>
+                <p>Which films made you laugh or cry (tears of joy)?</p>
               </div>
             </div>
           }
