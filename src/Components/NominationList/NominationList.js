@@ -128,7 +128,7 @@ const NominationList = (props) => {
                   setNominationsSubmitted(false);
                 }} 
                 >
-                ← Back to your Nominees
+                ← Back to your Nominations
               </div>
               <div className='nomination__submit-button'
                 onClick={() => {
