@@ -125,11 +125,18 @@ const NominationList = (props) => {
             <div className='nomination__submit-container'>
               <div className='nomination__submit-button'
                 onClick={() => {
+                  setNominationsSubmitted(false);
+                }} 
+                >
+                ← Back to your Nominees
+              </div>
+              <div className='nomination__submit-button'
+                onClick={() => {
                   props.setNominatedMovies([]);
                   setNominationsSubmitted(false);
                 }} 
                 >
-                ← Return to App
+                ← Start Over
               </div>
             </div>
           </div>
