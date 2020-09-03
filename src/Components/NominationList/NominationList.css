@@ -114,6 +114,12 @@
   color: white;
 }
 
+@media only screen and (max-width: 900px) {
+  .endgame__container { 
+    padding: 24px;
+  }
+}
+
 .endgame__container > p, ul {
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 300;

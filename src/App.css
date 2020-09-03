@@ -25,6 +25,7 @@ a, a:visited {
   align-items: center;
   font-family: 'Roboto', 'Arial', 'sans-serif';
 
+  text-align: center;
   max-width: 800px;
   color: white;
 }
