@@ -38,8 +38,10 @@
 }
 
 .nomination__poster > img {
-  display: inline;
   margin: 0;
+  width: 160px;
+  height: 240px;
+  object-fit: cover;
 }
 
 .nomination__poster-blank {

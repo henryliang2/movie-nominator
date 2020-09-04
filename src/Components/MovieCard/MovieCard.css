@@ -2,6 +2,7 @@
   margin: 20px;
   width: 160px;
   height: 240px;
+  object-fit: cover;
 }
 
 .poster__blank {

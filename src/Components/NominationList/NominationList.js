@@ -54,8 +54,6 @@ const NominationList = (props) => {
                       : <img 
                           alt={movie.Title}
                           src={movie.Poster} 
-                          width='160'
-                          height='240'
                           />
                     }
 
