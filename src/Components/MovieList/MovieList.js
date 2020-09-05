@@ -50,7 +50,7 @@ const MovieList = (props) => {
 
                     ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 
-                    : <Button
+                    : <Button primary
                         className='moviecard__nominate-button Polaris-Button'
                         onClick={() => {props.nominateMovie(i)}}
                         size='slim'>
