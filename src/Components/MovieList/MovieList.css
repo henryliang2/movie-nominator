@@ -28,6 +28,13 @@
   display: block;
 }
 
+@media only screen and (max-width: 900px) {
+  .moviecard__overlay:hover .Polaris-Button {
+    position: absolute;
+    bottom: -36px;
+  }
+}
+
 .moviecard__movie-title {
   display: block;
   font-family: 'Roboto', 'Arial', 'sans-serif';
