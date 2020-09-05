@@ -7,7 +7,7 @@ const MovieCard = (props) => {
   if ( props.posterUrl === 'N/A' ) {
 
     return (
-      <div className='moviecard__blank-poster'
+      <div className='moviecard__blank-poster fade-in'
         id={`returned-image-${props.index}`}
         >
         <Heading>{ props.title }</Heading>
@@ -17,7 +17,7 @@ const MovieCard = (props) => {
   } else if ( props.posterUrl ) {
 
     return (
-      <img className='moviecard__image'
+      <img className='moviecard__image fade-in'
         alt={ props.title }
         id={`returned-image-${props.index}`}
         src={ props.posterUrl }

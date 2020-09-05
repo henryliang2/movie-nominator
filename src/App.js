@@ -22,18 +22,19 @@ function App() {
 
   // boolean; true if at least one movie returned from query, false otherwise
   // initial state is true so that 'no movies found' is not showing
-  const [moviesReturned, setMoviesReturned] = useState(true);
+  const [isPopulated, setIsPopulated] = useState(true);
 
   const runOmdbApi = () => {
+    setReturnedMovies([]);
     setAwaitingApiResponse(true);
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
     .then(result => {
       if(result.Response === 'True') {
         setReturnedMovies(result.Search);
-        setMoviesReturned(true); 
+        setIsPopulated(true); 
       } else {
-        setMoviesReturned(false);
+        setIsPopulated(false);
       }
     })
     .then(setAwaitingApiResponse(false))
@@ -110,7 +111,7 @@ function App() {
               </form>
 
               { /* ----- Movies Returned from API Call (Display only if there are movies returned) ----- */}
-              { moviesReturned
+              { isPopulated
 
                 ? <MovieList
                     movieArray={ returnedMovies }
