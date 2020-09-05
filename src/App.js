@@ -40,6 +40,21 @@ function App() {
     setInputField('');
   }
 
+  const fadeImage = (elementId, method) => {
+    let image = document.getElementById(elementId);
+    if (method === 'in') {
+      console.log(elementId)
+      image.classList.add('on-fade-in');
+      console.log(image.classList)
+      console.log(image.className)
+    }
+    if (method === 'out') {
+      if (image.classList.includes('on-fade-in')) {
+        image.classList.remove('on-fade-in')
+      }
+    } 
+  }
+
   const nominateMovie = (idx) => {
     if ( nominatedMovies.length >= 5 ) {
       return null
@@ -51,16 +66,11 @@ function App() {
   } 
 
   const removeNomination = (idx) => {
+    fadeImage(`nominated-image-${idx}`, 'out');
     let updatedNominationList = Object.assign([], nominatedMovies);
     updatedNominationList.splice(idx, 1);
-    setNominatedMovies(updatedNominationList);
+    setTimeout(setNominatedMovies(updatedNominationList), 450);
   }
-
-  const fadeInImage = (elementId) => {
-    let image = document.getElementById(elementId);
-    console.log(elementId)
-    image.classList.add('on-fade-in');
-  } 
 
   return (
     <React.Fragment>
@@ -74,7 +84,7 @@ function App() {
               nominatedMovies={ nominatedMovies }
               removeNomination={ removeNomination }
               setNominatedMovies={ setNominatedMovies }
-              fadeInImage={ fadeInImage }
+              fadeImage={ fadeImage }
             />
 
             : <div className='welcome__container'>
@@ -124,7 +134,7 @@ function App() {
                     nominatedMovies={ nominatedMovies}
                     nominateMovie={ nominateMovie }
                     awaitingApiResponse={ awaitingApiResponse }
-                    fadeInImage={ fadeInImage }
+                    fadeImage={ fadeImage }
                   />
 
                 : <div className='movielist__search-failed'>No movies found with that search =(</div>

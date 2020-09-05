@@ -56,10 +56,9 @@ const NominationList = (props) => {
                       : <img
                           className='nomination__poster-image'
                           id={`nominated-image-${i}`} 
-                          onLoad={() => { props.fadeInImage(`nominated-image-${i}`) }}
+                          onLoad={() => { props.fadeImage(`nominated-image-${i}`, 'in') }}
                           alt={movie.Title}
                           src={movie.Poster} 
-                          
                           />
                     }
 

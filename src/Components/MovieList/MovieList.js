@@ -36,7 +36,7 @@ const MovieList = (props) => {
                   year={ movie.Year }
                   posterUrl={ movie.Poster }
                   index={ i }
-                  fadeInImage={ props.fadeInImage }
+                  fadeImage={ props.fadeImage }
                 />
                 
                 <div className='moviecard__overlay'>
