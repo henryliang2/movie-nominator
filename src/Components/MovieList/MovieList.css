@@ -20,7 +20,11 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.moviecard__overlay:hover .moviecard__nominate-button {
+.moviecard__overlay .Polaris-Button {
+  display: none;
+}
+
+.moviecard__overlay:hover .Polaris-Button {
   display: block;
 }
 
@@ -42,10 +46,6 @@
   color: white;
   margin-bottom: 20px;
   padding: 12px;
-}
-
-.moviecard__nominate-button {
-  display: none;
 }
 
 .moviecard__nominate-unable {
