@@ -18,7 +18,7 @@ const NominationList = (props) => {
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
 
   useEffect(() => {
-    setMovies(props.nominatedMovies)
+    setMovies(props.nominatedMovies);
   }, [props.nominatedMovies])
 
   /* 
@@ -29,7 +29,7 @@ const NominationList = (props) => {
     return (
       <React.Fragment>
         <div className='nomination__header'>
-          { props.nominatedMovies.length < 5 
+          { movies.length < 5 
             ? 'My Nominations' 
             : <img alt='Final Nominations' 
                 className='nomination__ribbon-final' 
@@ -55,8 +55,7 @@ const NominationList = (props) => {
 
                       : <img
                           className='nomination__poster-image'
-                          id={`nominated-image-${i}`} 
-                          onLoad={() => { props.fadeImage(`nominated-image-${i}`, 'in') }}
+                          id={`nominated-image-${i}`}
                           alt={movie.Title}
                           src={movie.Poster} 
                           />

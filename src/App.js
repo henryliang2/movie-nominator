@@ -43,13 +43,10 @@ function App() {
   const fadeImage = (elementId, method) => {
     let image = document.getElementById(elementId);
     if (method === 'in') {
-      console.log(elementId)
       image.classList.add('on-fade-in');
-      console.log(image.classList)
-      console.log(image.className)
     }
     if (method === 'out') {
-      if (image.classList.includes('on-fade-in')) {
+      if (image.classList.contains('on-fade-in')) {
         image.classList.remove('on-fade-in')
       }
     } 
@@ -62,14 +59,14 @@ function App() {
     setNominatedMovies(prevState => {
       return [...prevState, returnedMovies[idx]]
     });
-    setReturnedMovies([]);
+    setReturnedMovies([]); // remove all images from 'returned images' section
   } 
 
   const removeNomination = (idx) => {
     fadeImage(`nominated-image-${idx}`, 'out');
     let updatedNominationList = Object.assign([], nominatedMovies);
     updatedNominationList.splice(idx, 1);
-    setTimeout(setNominatedMovies(updatedNominationList), 450);
+    setNominatedMovies(updatedNominationList);
   }
 
   return (
