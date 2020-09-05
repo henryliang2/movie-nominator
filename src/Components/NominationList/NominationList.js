@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Confetti from 'react-confetti';
 import './NominationList.css'
 import { CircleCancelMajorTwotone } from '@shopify/polaris-icons';
@@ -17,8 +17,13 @@ const NominationList = (props) => {
   // true after submitting nomations
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
 
+  const headerRef = useRef(null)
+
   useEffect(() => {
     setMovies(props.nominatedMovies);
+    if (props.nominatedMovies.length > 4) {
+      window.scrollTo(0, headerRef.current.offsetTop)
+    }
   }, [props.nominatedMovies])
 
   /* 
@@ -28,11 +33,11 @@ const NominationList = (props) => {
 
     return (
       <React.Fragment>
-        <div className='nomination__header'>
+        <div className='nomination__header' ref={ headerRef }>
           { movies.length < 5 
             ? 'My Nominations' 
             : <img alt='Final Nominations' 
-                className='nomination__ribbon-final' 
+                className='nomination__ribbon-final fade-in' 
                 src={process.env.PUBLIC_URL + 'ribbon.svg'} /> 
           }
         </div> 
@@ -47,14 +52,14 @@ const NominationList = (props) => {
                     {/* If no movie poster, return generic poster */}
                     { movie.Poster === 'N/A'
 
-                      ? <div className='nomination__poster-image poster-blank'
+                      ? <div className='nomination__poster-image poster-blank fade-in'
                           id={`nominated-image-${i}`} 
                           >
                           <Heading>{ movie.Title }</Heading>
                         </div>
 
                       : <img
-                          className='nomination__poster-image'
+                          className='nomination__poster-image fade-in'
                           id={`nominated-image-${i}`}
                           alt={movie.Title}
                           src={movie.Poster} 

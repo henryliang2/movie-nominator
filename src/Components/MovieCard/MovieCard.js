@@ -21,7 +21,10 @@ const MovieCard = (props) => {
         alt={ props.title }
         id={`returned-image-${props.index}`}
         src={ props.posterUrl }
-        onLoad={() => { props.fadeImage(`returned-image-${props.index}`, 'in') }}
+        onLoad={() => { 
+          document.getElementById(`returned-image-${props.index}`)
+          .classList.add('fade-in'); 
+        }}
       />
     );
     

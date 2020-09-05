@@ -40,18 +40,6 @@ function App() {
     setInputField('');
   }
 
-  const fadeImage = (elementId, method) => {
-    let image = document.getElementById(elementId);
-    if (method === 'in') {
-      image.classList.add('on-fade-in');
-    }
-    if (method === 'out') {
-      if (image.classList.contains('on-fade-in')) {
-        image.classList.remove('on-fade-in')
-      }
-    } 
-  }
-
   const nominateMovie = (idx) => {
     if ( nominatedMovies.length >= 5 ) {
       return null
@@ -63,7 +51,6 @@ function App() {
   } 
 
   const removeNomination = (idx) => {
-    fadeImage(`nominated-image-${idx}`, 'out');
     let updatedNominationList = Object.assign([], nominatedMovies);
     updatedNominationList.splice(idx, 1);
     setNominatedMovies(updatedNominationList);
@@ -81,7 +68,6 @@ function App() {
               nominatedMovies={ nominatedMovies }
               removeNomination={ removeNomination }
               setNominatedMovies={ setNominatedMovies }
-              fadeImage={ fadeImage }
             />
 
             : <div className='welcome__container'>
@@ -131,7 +117,6 @@ function App() {
                     nominatedMovies={ nominatedMovies}
                     nominateMovie={ nominateMovie }
                     awaitingApiResponse={ awaitingApiResponse }
-                    fadeImage={ fadeImage }
                   />
 
                 : <div className='movielist__search-failed'>No movies found with that search =(</div>

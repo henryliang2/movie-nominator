@@ -4,8 +4,7 @@
   height: 240px;
   object-fit: cover;
 
-  opacity: 0; /* Initial Opacity of zero, will fade in using onLoad */
-  transition: 0.5s opacity;
+  opacity: 0;
 }
 
 .moviecard__blank-poster {
@@ -33,7 +32,7 @@
   width: 160px;
   height: 240px;
 
-  background-color:rgba(0, 0, 0, 0.7);
+  background-color:rgba(0, 0, 0, 0.8);
 
   display: flex; /* change to flex on hover */
   flex-direction: column;
