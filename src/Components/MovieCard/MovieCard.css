@@ -1,11 +1,14 @@
-.moviecard__container > img {
+.moviecard__image {
   margin: 20px;
   width: 160px;
   height: 240px;
   object-fit: cover;
+
+  opacity: 0; /* Initial Opacity of zero, will fade in using onLoad */
+  transition: 0.5s opacity;
 }
 
-.poster__blank {
+.moviecard__blank-poster {
   margin: 20px;
   width: 160px;
   height: 240px;

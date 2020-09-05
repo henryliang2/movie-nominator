@@ -42,18 +42,24 @@ const NominationList = (props) => {
           {
             movies.map((movie, i) => {
               return <div key={i} className='nomination__moviecard'>
-                  <div className='nomination__poster'>
+                  <div className='nomination__poster-container'>
 
                     {/* If no movie poster, return generic poster */}
                     { movie.Poster === 'N/A'
 
-                      ? <div className='nomination__poster-blank'>
-                          <Heading>{ movie.Title}</Heading>
+                      ? <div className='nomination__poster-image poster-blank'
+                          id={`nominated-image-${i}`} 
+                          >
+                          <Heading>{ movie.Title }</Heading>
                         </div>
 
-                      : <img 
+                      : <img
+                          className='nomination__poster-image'
+                          id={`nominated-image-${i}`} 
+                          onLoad={() => { props.fadeInImage(`nominated-image-${i}`) }}
                           alt={movie.Title}
                           src={movie.Poster} 
+                          
                           />
                     }
 

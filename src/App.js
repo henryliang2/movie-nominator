@@ -56,16 +56,25 @@ function App() {
     setNominatedMovies(updatedNominationList);
   }
 
+  const fadeInImage = (elementId) => {
+    let image = document.getElementById(elementId);
+    console.log(elementId)
+    image.classList.add('on-fade-in');
+  } 
+
   return (
     <React.Fragment>
       <div className='layout__container'>
         <div className='layout__section'>
+
+          {/* ---- Display nominated movies if there are any, otherwise display welcome */}
           { (nominatedMovies.length > 0 ) 
 
             ? <NominationList 
               nominatedMovies={ nominatedMovies }
               removeNomination={ removeNomination }
               setNominatedMovies={ setNominatedMovies }
+              fadeInImage={ fadeInImage }
             />
 
             : <div className='welcome__container'>
@@ -107,7 +116,7 @@ function App() {
                 </TextField>
               </form>
 
-              { /* ----- Movies Returned from API Call ----- */}
+              { /* ----- Movies Returned from API Call (Display only if there are movies returned) ----- */}
               { moviesReturned
 
                 ? <MovieList
@@ -115,6 +124,7 @@ function App() {
                     nominatedMovies={ nominatedMovies}
                     nominateMovie={ nominateMovie }
                     awaitingApiResponse={ awaitingApiResponse }
+                    fadeInImage={ fadeInImage }
                   />
 
                 : <div className='movielist__search-failed'>No movies found with that search =(</div>

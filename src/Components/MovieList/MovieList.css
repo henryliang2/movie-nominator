@@ -20,6 +20,10 @@
   transition: opacity 0.2s ease-in-out;
 }
 
+.moviecard__overlay:hover .moviecard__nominate-button {
+  display: block;
+}
+
 .moviecard__movie-title {
   display: block;
   font-family: 'Roboto', 'Arial', 'sans-serif';
@@ -41,7 +45,7 @@
 }
 
 .moviecard__nominate-button {
-  display: block;
+  display: none;
 }
 
 .moviecard__nominate-unable {

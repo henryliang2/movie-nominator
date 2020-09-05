@@ -31,23 +31,30 @@
 }
 
 
-.nomination__poster {
+.nomination__poster-container {
   position: relative;
   display: inline-block;
   margin-bottom: 0;
 }
 
-.nomination__poster > img {
+.nomination__poster-image {
   margin: 0;
   width: 160px;
   height: 240px;
   object-fit: cover;
+  opacity: 0;
+  transition: 0.5s opacity;
 }
 
-.nomination__poster-blank {
+@media only screen and (max-width: 900px) {
+  .nomination__poster-image {
+    width: 120px;
+    height: 180px;
+  }
+}
+
+.poster-blank {
   padding: 6px;
-  width: 160px;
-  height: 240px;
   background: white;
   color: #41295a;
   

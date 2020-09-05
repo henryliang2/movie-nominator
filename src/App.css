@@ -78,3 +78,7 @@ sup {
   font-size: 2em;
   color: #aaa;
 }
+
+.on-fade-in {
+  opacity: 1;
+}
