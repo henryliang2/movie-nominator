@@ -33,7 +33,7 @@
 .nomination__poster-container {
   position: relative;
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: 6px;
 }
 
 .nomination__poster-image {
@@ -54,6 +54,7 @@
   padding: 6px;
   background: white;
   color: #41295a;
+  margin-bottom: 4.5px;
   
   display: flex;
   align-items: center;
