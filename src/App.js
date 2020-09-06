@@ -49,6 +49,13 @@ function App() {
       return [...prevState, returnedMovies[idx]]
     });
     setReturnedMovies([]); // remove all images from 'returned images' section
+    try {
+      if (nominatedMovies.length < 5) {
+        document.getElementsByClassName('Polaris-TextField__Input')[0].focus();
+      }
+    } catch(err) {
+      console.log(err)
+    }
   } 
 
   const removeNomination = (idx) => {
@@ -98,7 +105,7 @@ function App() {
                   runOmdbApi(); }}
                 >
 
-                <TextField type='text' 
+                <TextField type='text'
                   value={inputField}
                   placeholder='Search Movies'
                   prefix={<Icon source={SearchMinor} color="inkLighter" />}
