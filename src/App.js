@@ -75,11 +75,7 @@ function App() {
               <img id='shoppies-logo' 
                 alt='Shoppies Award Logo' 
                 src={process.env.PUBLIC_URL + 'award_logo.svg'} />
-              <div className='welcome__title'>Nominate Your Favourite Movies!</div>
-              <div className='welcome__subtext'>
-                <p>The annual Shoppies<sup>TM</sup> awards are approaching quickly.</p>
-                <p>Which films made you laugh or cry (tears of joy)?</p>
-              </div>
+              <div className='welcome__title'>It's time to decide the winners.</div>
             </div>
           }
         </div>

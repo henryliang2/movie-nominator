@@ -19,6 +19,8 @@ const NominationList = (props) => {
 
   const headerRef = useRef(null)
 
+  const imageRef = useRef(null)
+
   useEffect(() => {
     setMovies(props.nominatedMovies);
     if (props.nominatedMovies.length > 4) {
@@ -61,8 +63,12 @@ const NominationList = (props) => {
                       : <img
                           className='nomination__poster-image fade-in'
                           id={`nominated-image-${i}`}
+                          ref={imageRef}
                           alt={movie.Title}
                           src={movie.Poster} 
+                          onError={() => {
+                            imageRef.current.src=`${process.env.PUBLIC_URL}indigoDark.png`
+                          }}
                           />
                     }
 

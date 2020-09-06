@@ -32,7 +32,7 @@ a, a:visited {
 }
 
 .welcome__title {
-  margin-top: 12px;
+  margin: 12px;
   padding: 12px;
   font-size: 3em;
   line-height: 1em;
@@ -52,7 +52,7 @@ sup {
 }
 
 #shoppies-logo {
-  max-height: 250px;
+  max-height: 260px;
 }
 
 #searchfield {
