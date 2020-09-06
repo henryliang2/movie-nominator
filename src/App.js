@@ -75,7 +75,7 @@ function App() {
               <img id='shoppies-logo' 
                 alt='Shoppies Award Logo' 
                 src={process.env.PUBLIC_URL + 'award_logo.svg'} />
-              <div className='welcome__title'>It's time to decide the winners.</div>
+              <div className='welcome__title'>It's time to nominate your favourite films.</div>
             </div>
           }
         </div>
