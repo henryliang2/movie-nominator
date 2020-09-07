@@ -84,8 +84,10 @@ function App() {
     // get nominations from database and set back into state
     const databaseRef = db.collection(result.user.uid).doc('nominatedMovies');
     const returnRef = await databaseRef.get()
-    const returnedData = returnRef.data();
-    setNominatedMovies(returnedData.nominatedMovies);
+    if (returnRef.exists) {
+      const returnedData = returnRef.data();
+      setNominatedMovies(returnedData.nominatedMovies);
+    }
 
     setIsSignedIn(true);
   }
@@ -128,7 +130,7 @@ function App() {
           { !isSignedIn &&
             <div className='signin__container'>
               <div className='signin__button' onClick={signInWithFirebase}>
-                Sign In
+                Sign In with Google
               </div>
               <p>
                 We ask you to sign in so that we can <br/>
