@@ -79,9 +79,40 @@ sup {
   color: #aaa;
 }
 
-.on-fade-in {
-  transition: all 0.5s ease-in;
-  opacity: 1;
+.signin__container {
+  min-height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signin__container > p {
+  color: #888;
+  text-align: center;
+}
+
+.signin__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #41295a;
+  border-radius: 12px;
+  margin-bottom: 20px;
+
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 500;
+  font-size: 1.6em;
+  color: white;
+
+  min-height: 60px;
+  min-width: 200px;
+
+  cursor: pointer;
+}
+
+.signin__button:hover {
+  background-color: #6732b3;
 }
 
 .fade-in {
