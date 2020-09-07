@@ -160,7 +160,7 @@ const NominationList = (props) => {
                   setNominationsSubmitted(false);
                 }} 
                 >
-                ← Start Over
+                ← Undo All Nominations
               </div>
             </div>
           </div>
