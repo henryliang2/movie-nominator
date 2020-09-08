@@ -113,6 +113,12 @@ sup {
   display: inline;
 }
 
+#signin__processing {
+  color: #888;
+  text-align: center;
+  display: none;
+}
+
 #signin__error {
   color: red;
   text-align: center;

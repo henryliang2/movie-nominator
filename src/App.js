@@ -78,6 +78,14 @@ function App() {
   }
 
   const signInWithFirebase = async () => {
+    const descriptionMessage = document.getElementById('signin__description');
+    const processingMessage = document.getElementById('signin__processing');
+    const errorMessage = document.getElementById('signin__error');
+
+    descriptionMessage.style.display = 'none';
+    errorMessage.style.display = 'none';
+    processingMessage.style.display = 'inline';
+
     try {
       const result = await firebase.auth().signInWithPopup(provider)
       await setUser(result.user);
@@ -90,10 +98,11 @@ function App() {
         setNominatedMovies(returnedData.nominatedMovies);
       }
       setIsSignedIn(true);
-    } catch(err) {
-      console.log(err);
-      document.getElementById('signin__description').style.display = 'none'
-      document.getElementById('signin__error').style.display = 'inline'
+    } 
+
+    catch(err) {
+      processingMessage.style.display = 'none';
+      errorMessage.style.display = 'inline';
     }
   }
   
@@ -140,6 +149,9 @@ function App() {
               <p id='signin__description'>
                 We ask you to sign in so that we can <br/>
                 save your progress if you leave the page.
+              </p>
+              <p id='signin__processing'>
+                Signing you in ...
               </p>
               <p id='signin__error'>
                 There was an error signing you in.
