@@ -78,18 +78,23 @@ function App() {
   }
 
   const signInWithFirebase = async () => {
-    const result = await firebase.auth().signInWithPopup(provider)
-    setUser(result.user);
+    try {
+      const result = await firebase.auth().signInWithPopup(provider)
+      await setUser(result.user);
 
-    // get nominations from database and set back into state
-    const databaseRef = db.collection(result.user.uid).doc('nominatedMovies');
-    const returnRef = await databaseRef.get()
-    if (returnRef.exists) {
-      const returnedData = returnRef.data();
-      setNominatedMovies(returnedData.nominatedMovies);
+      // get nominations from database and set back into state
+      const databaseRef = db.collection(result.user.uid).doc('nominatedMovies');
+      const returnRef = await databaseRef.get()
+      if (returnRef.exists) {
+        const returnedData = returnRef.data();
+        setNominatedMovies(returnedData.nominatedMovies);
+      }
+      setIsSignedIn(true);
+    } catch(err) {
+      console.log(err);
+      document.getElementById('signin__description').style.display = 'none'
+      document.getElementById('signin__error').style.display = 'inline'
     }
-
-    setIsSignedIn(true);
   }
   
   useEffect(() => {
@@ -132,9 +137,12 @@ function App() {
               <div className='signin__button' onClick={signInWithFirebase}>
                 Sign In with Google
               </div>
-              <p>
+              <p id='signin__description'>
                 We ask you to sign in so that we can <br/>
                 save your progress if you leave the page.
+              </p>
+              <p id='signin__error'>
+                There was an error signing you in.
               </p>
             </div>
           }

@@ -88,11 +88,6 @@ sup {
   flex-direction: column;
 }
 
-.signin__container > p {
-  color: #888;
-  text-align: center;
-}
-
 .signin__button {
   display: flex;
   align-items: center;
@@ -110,6 +105,18 @@ sup {
   min-width: 300px;
 
   cursor: pointer;
+}
+
+#signin__description {
+  color: #888;
+  text-align: center;
+  display: inline;
+}
+
+#signin__error {
+  color: red;
+  text-align: center;
+  display: none;
 }
 
 .signin__button:hover {
