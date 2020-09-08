@@ -13,7 +13,7 @@ Shopify requires a simple to use interface that makes it easy to:
 * View the list of films already nominated
 * Remove a nominee from the nomination list
   
-** Technical Requirements **
+**Technical Requirements**
 1. Search results should come from OMDB's API.
 2. Each search result should list at least its title, year of release and a button to nominate that film.
 3. Updates to the search terms should update the result list
