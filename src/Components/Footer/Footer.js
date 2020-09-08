@@ -4,9 +4,10 @@ import './Footer.css'
 const Footer = () => {
 
   const links = [
+    ['OMDb API', 'http://www.omdbapi.com/'],
+    ['Firebase API', 'https://firebase.google.com/'],
     ['shopify/polaris', 'https://polaris.shopify.com/'],
     ['material-ui/icons', 'https://material-ui.com/'],
-    ['OMDb API', 'http://www.omdbapi.com/'],
     ['react-confetti', 'https://www.npmjs.com/package/react-confetti'],
   ]
 

@@ -20,7 +20,6 @@ a, a:visited {
 
 .welcome__container {
   margin: auto;
-  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,9 +30,9 @@ a, a:visited {
 }
 
 .welcome__title {
-  margin: 12px;
+  margin: 36px;
   padding: 12px;
-  font-size: 3em;
+  font-size: 2em;
   line-height: 1em;
   font-weight: 500;
 }
