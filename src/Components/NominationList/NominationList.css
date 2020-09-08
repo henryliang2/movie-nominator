@@ -9,6 +9,7 @@
 }
 
 .nomination__moviecard {
+  padding-top: 36px;
   text-align: center;
 }
 
@@ -60,11 +61,26 @@
   align-items: center;
 }
 
+/*remove-button is hidden by default*/
 .nomination__remove-button {
   position: absolute;
   top: -12px;
   right: -12px;
   cursor: pointer;
+  display: none;
+}
+
+/* On smaller screens that could be touchscreen,
+always display remove-button */
+@media only screen and (max-width: 1000px) {
+  .nomination__remove-button {
+    display: block;
+  }
+}
+
+/* Display remove-button when hovering over moviecard */
+.nomination__moviecard:hover .nomination__remove-button {
+  display: block;
 }
 
 .nomination__submit-container {
@@ -104,7 +120,6 @@
   padding: 24px;
   font-size: 3em;
   font-weight: 500;
-  margin-bottom: 36px;
   color: white;
 }
 
