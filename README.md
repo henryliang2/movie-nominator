@@ -3,7 +3,6 @@ It's time to nominate your favourite films for this year's awards!
 This app was made for the UX Developer Intern & Web Developer Intern Challenge.
   
 This app was made using ReactJS and uses Firebase for authentication and database services.  
-<<<<<<< HEAD
   
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)
 
@@ -14,8 +13,6 @@ See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://sh
 4. Movies in search results can be added and removed from the nomination list.
 5. If a search result has already been nominated, disable its nominate button.
 6. Display a banner when the user has 5 nominations.
-
-=======
   
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)  
   
@@ -33,11 +30,8 @@ Shopify requires a simple to use interface that makes it easy to:
 5. If a search result has already been nominated, disable its nominate button.
 6. Display a banner when the user has 5 nominations.
   
->>>>>>> a61564e8defb57be5b372ce98c919e4ad0c1e042
 ## Demonstration
 ![](public/demo.gif)
-
-##
 
 ## External Resources Used
 [OMDb API](http://www.omdbapi.com/), [Firebase API](https://firebase.google.com/), [Shopify Polaris](https://polaris.shopify.com/), [Material UI Icons](https://material-ui.com/), [react-confetti](https://www.npmjs.com/package/react-confetti)
