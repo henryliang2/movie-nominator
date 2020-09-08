@@ -10,7 +10,7 @@ const MovieList = (props) => {
   })
 
   // smaller font size for title if title is very large
-  const titleClassNameArray = props.movieArray.map((movie, i) => {
+  const movieTitleArray = props.movieArray.map((movie, i) => {
     if (movie.Title.length > 40) { 
       return 'moviecard__movie-title-small' 
     } else { 
@@ -41,7 +41,7 @@ const MovieList = (props) => {
                 />
                 
                 <div className='moviecard__overlay'>
-                  <p className={titleClassNameArray[i]}>
+                  <p className={movieTitleArray[i]}>
                     { movie.Title }<br />
                     { `(${movie.Year})` }
                   </p>
