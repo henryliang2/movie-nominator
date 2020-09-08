@@ -5,8 +5,8 @@ import './MovieList.css'
 
 const MovieList = (props) => {
 
-  const nominatedMovieTitles = props.nominatedMovies.map((movie, i) => {
-    return movie.Title;
+  const movieYearAndTitle = props.nominatedMovies.map((movie, i) => {
+    return `${movie.Year}-${movie.Title}`
   })
 
   // smaller font size for title if title is very large
@@ -47,7 +47,7 @@ const MovieList = (props) => {
                   </p>
 
                   {/* display nominate button only if not already nominated */}
-                  { nominatedMovieTitles.includes(movie.Title)
+                  { movieYearAndTitle.includes(`${movie.Year}-${movie.Title}`)
 
                     ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 
