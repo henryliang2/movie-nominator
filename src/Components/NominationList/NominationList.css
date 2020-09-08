@@ -2,8 +2,7 @@
 
 .nomination__container {
   display: grid;
-  /* Each movie card poster takes up unit of width, 
-  then the submit button takes up two */
+  /* Each movie card poster takes up unit of width */
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-bottom: 24px;
 }
@@ -21,8 +20,7 @@
 
 @media only screen and (max-width: 900px) {
   .nomination__container { 
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
   }
 
