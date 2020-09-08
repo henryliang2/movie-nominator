@@ -2,7 +2,7 @@
 It's time to nominate your favourite films for this year's awards!  
 This app was made for the UX Developer Intern & Web Developer Intern Challenge.
   
-This app was made using ReactJS and uses Firebase for authentication and database services.  
+Made using ReactJS and uses Firebase for authentication and database services.  
   
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)
 
