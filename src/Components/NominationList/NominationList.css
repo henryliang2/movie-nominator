@@ -44,21 +44,21 @@
   object-fit: cover;
 }
 
+.nomination__poster-title {
+  cursor: default;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @media only screen and (max-width: 900px) {
   .nomination__poster-image {
     width: 120px;
     height: 180px;
   }
-}
-
-.poster-blank {
-  padding: 6px;
-  background: white;
-  color: #41295a;
-  margin-bottom: 4.5px;
-  
-  display: flex;
-  align-items: center;
 }
 
 /*remove-button is hidden by default*/

@@ -32,11 +32,12 @@ const MovieList = (props) => {
             return (
               <div key={i} className='moviecard__container'>
                 <MovieCard
+                  classNames={'moviecard__image'}
+                  id={`returned-image-${props.index}`}
                   title={ movie.Title }
                   year={ movie.Year }
                   posterUrl={ movie.Poster }
                   index={ i }
-                  fadeImage={ props.fadeImage }
                 />
                 
                 <div className='moviecard__overlay'>

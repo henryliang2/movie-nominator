@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Heading } from '@shopify/polaris';
 import './MovieCard.css'
 
@@ -6,35 +6,35 @@ const MovieCard = (props) => {
 
   const imageRef = useRef(null);
 
-  if ( props.posterUrl === 'N/A' ) {
+  const [hasImageError, setHasImageError] = useState(false);
 
-    return (
-      <div className='moviecard__blank-poster fade-in'
-        id={`returned-image-${props.index}`}
-        >
-        <Heading>{ props.title }</Heading>
-      </div>
-    );
-
-  } else if ( props.posterUrl ) {
-
-    return (
-      <img className='moviecard__image'
+  return (
+    <React.Fragment>
+      <img className={ props.classNames }
         alt={ props.title }
         ref={imageRef}
-        id={`returned-image-${props.index}`}
-        src={ props.posterUrl }
+        id={props.id}
+        src={ (props.posterUrl !== 'N/A')
+          ? props.posterUrl
+          : `${process.env.PUBLIC_URL}poster-blank.jpg`
+        }
         onError={() => {
-          imageRef.current.src=`${process.env.PUBLIC_URL}indigoDark.png`
+          imageRef.current.src=`${process.env.PUBLIC_URL}poster-blank.jpg`;
+          setHasImageError(true);
         }}
         onLoad={() => { 
           imageRef.current.classList.add('fade-in'); 
         }}
       />
-    );
-    
-  }
+      {/* only show poster-title if poster is N/A or there is an error */}
+      { (props.posterUrl === 'N/A' || hasImageError === true) && 
+        <div className='nomination__poster-title'>
+          <Heading>{ props.title }</Heading>
+        </div>
+      }
 
+    </React.Fragment>
+  );
   
 }
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Confetti from 'react-confetti';
+import MovieCard from './../MovieCard/MovieCard';
 import './NominationList.css'
 import { CircleCancelMajorTwotone } from '@shopify/polaris-icons';
-import { Icon, Heading, DisplayText } from '@shopify/polaris';
+import { Icon, DisplayText } from '@shopify/polaris';
 import { LinkedIn, GitHub, Email }  from '@material-ui/icons';
 
 
@@ -18,8 +19,6 @@ const NominationList = (props) => {
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
 
   const headerRef = useRef(null)
-
-  const imageRef = useRef(null)
 
   useEffect(() => {
     setMovies(props.nominatedMovies);
@@ -48,32 +47,19 @@ const NominationList = (props) => {
         
           {
             movies.map((movie, i) => {
-              return <div key={i} className='nomination__moviecard'>
+              return <div className='nomination__moviecard'>
                   <div className='nomination__poster-container'>
-
-                    {/* If no movie poster, return generic poster */}
-                    { movie.Poster === 'N/A'
-
-                      ? <div className='nomination__poster-image poster-blank fade-in'
-                          id={`nominated-image-${i}`} 
-                          >
-                          <Heading>{ movie.Title }</Heading>
-                        </div>
-
-                      : <img
-                          className='nomination__poster-image fade-in'
-                          id={`nominated-image-${i}`}
-                          ref={imageRef}
-                          alt={movie.Title}
-                          src={movie.Poster} 
-                          onError={() => {
-                            imageRef.current.src=`${process.env.PUBLIC_URL}indigoDark.png`
-                          }}
-                          />
-                    }
+                    <MovieCard key={ i } 
+                      classNames={'nomination__poster-image fade-in'}
+                      id={`nominated-image-${i}`}
+                      title={ movie.Title }
+                      posterUrl={ movie.Poster }
+                      year={ movie.Year }
+                      index={ i }
+                    />
 
                     <div className='nomination__remove-button'
-                      onClick={ () => {props.removeNomination(i)} }
+                      onClick={ () => { props.removeNomination(i) }}
                       onMouseEnter={() => { setHoveredIcon(i) }}
                       onMouseLeave={() => { setHoveredIcon(-1) }}
                       >
