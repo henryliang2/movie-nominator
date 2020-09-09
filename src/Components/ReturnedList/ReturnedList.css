@@ -60,12 +60,12 @@
   color: white;
 }
 
-.movielist__container {
+.returnedlist__container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.movielist___loading-spinner {
+.returnedlist___loading-spinner {
   margin: 48px auto;
 }

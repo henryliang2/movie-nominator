@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Icon, DisplayText } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
-import MovieList from './Components/MovieList/MovieList';
+import ReturnedList from './Components/ReturnedList/ReturnedList';
 import NominationList from './Components/NominationList/NominationList'
 import firebaseConfig from './firebaseConfig';
 import * as firebase from "firebase/app";
@@ -183,13 +183,13 @@ function App() {
 
               { /* ----- Movies Returned from API Call (Display only if movies returned) ----- */}
               { isPopulated
-                ? <MovieList
-                    movieArray={ returnedMovies }
+                ? <ReturnedList
+                    returnedMovies={ returnedMovies }
                     nominatedMovies={ nominatedMovies}
                     nominateMovie={ nominateMovie }
                     awaitingApiResponse={ awaitingApiResponse }
                   />
-                : <div className='movielist__search-failed'>No movies found with that search =(</div>
+                : <div className='returnedlist__search-failed'>No movies found with that search =(</div>
               }
             </React.Fragment>
           }

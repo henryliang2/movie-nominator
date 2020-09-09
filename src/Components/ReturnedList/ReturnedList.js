@@ -1,34 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Spinner } from '@shopify/polaris';
-import MovieCard from './../MovieCard/MovieCard'
-import './MovieList.css'
+import MovieCard from '../MovieCard/MovieCard'
+import './ReturnedList.css'
 
-const MovieList = (props) => {
+const ReturnedList = (props) => {
 
-  const movieYearAndTitle = props.nominatedMovies.map((movie, i) => {
-    return `${movie.Year}-${movie.Title}`
-  })
+  const [movieId, setMovieId] = useState([])
+
+  const [titleArray, setTitleArray] = useState([])
+
+  useEffect(() => {
+    const array = props.nominatedMovies.map((movie, i) => {
+      return `${movie.Year}${movie.Title}`
+    })
+    setMovieId(array);
+  }, [props.nominatedMovies])
 
   // smaller font size for title if title is very large
-  const movieTitleArray = props.movieArray.map((movie, i) => {
-    if (movie.Title.length > 40) { 
-      return 'moviecard__movie-title-small' 
-    } else { 
-      return 'moviecard__movie-title' 
-    }
-  });
-
+  useEffect(() => {
+    const array = props.returnedMovies.map((movie, i) => {
+        return ( movie.Title.length > 40
+        ? 'moviecard__movie-title-small' 
+        : 'moviecard__movie-title'
+      )
+    });
+    setTitleArray(array)
+  }, [props.returnedMovies])
+  
   return (
-    <div className='movielist__container'>
+    <div className='returnedlist__container'>
 
       {/*  if awaiting Api Response, show spinner, else show content */}
       { props.awaitingApiResponse
 
-        ? <div className='movielist___loading-spinner'>
+        ? <div className='returnedlist___loading-spinner'>
             <Spinner size="large" color="teal" accessibilityLabel="Loading ..." />
           </div>
 
-        : props.movieArray.map((movie, i) => {
+        : props.returnedMovies.map((movie, i) => {
             return (
               <div key={i} className='moviecard__container'>
                 <MovieCard
@@ -41,13 +50,13 @@ const MovieList = (props) => {
                 />
                 
                 <div className='moviecard__overlay'>
-                  <p className={movieTitleArray[i]}>
+                  <p className={titleArray[i]}>
                     { movie.Title }<br />
                     { `(${movie.Year})` }
                   </p>
 
                   {/* display nominate button only if not already nominated */}
-                  { movieYearAndTitle.includes(`${movie.Year}-${movie.Title}`)
+                  { movieId.includes(`${movie.Year}${movie.Title}`)
 
                     ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 
@@ -68,4 +77,4 @@ const MovieList = (props) => {
 
 }
 
-export default MovieList;
+export default ReturnedList;
