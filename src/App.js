@@ -148,8 +148,8 @@ function App() {
                 <p className='signin__text'>Sign in with Google</p>
               </div>
               <p id='signin__description'>
-                We ask you to sign in so that we can <br/>
-                save your progress if you leave the page.
+                We ask you to sign in so that your progress <br/>
+                can be saved if you decide to come back later.
               </p>
               <p id='signin__processing'>
                 Signing you in ...
