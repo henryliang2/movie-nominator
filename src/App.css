@@ -83,26 +83,32 @@ a, a:visited {
 }
 
 .signin__button {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #1C2260;
-  border-radius: 12px;
+  display: flex;
+  background-color: #4285F4;
+  border-radius: 4px;
   margin-bottom: 20px;
 
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 500;
-  font-size: 1.6em;
+  font-size: 1em;
   color: white;
 
-  min-height: 60px;
-  min-width: 300px;
+  min-width: 260px;
+  padding: 4px;
 
   cursor: pointer;
 }
 
 .signin__button:hover {
-  background-color: #2d3691;
+  background-color: #6497ed;
+}
+
+.signin__text {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 #signin__description {

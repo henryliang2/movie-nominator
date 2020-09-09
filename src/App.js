@@ -144,7 +144,8 @@ function App() {
           { !isSignedIn &&
             <div className='signin__container'>
               <div className='signin__button' onClick={signInWithFirebase}>
-                Sign In with Google
+                <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
+                <p className='signin__text'>Sign in with Google</p>
               </div>
               <p id='signin__description'>
                 We ask you to sign in so that we can <br/>
