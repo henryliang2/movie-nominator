@@ -47,9 +47,9 @@ const NominationList = (props) => {
         
           {
             movies.map((movie, i) => {
-              return <div className='nomination__moviecard'>
+              return <div className='nomination__moviecard' key={i}>
                   <div className='nomination__poster-container'>
-                    <MovieCard key={ i } 
+                    <MovieCard
                       classNames={'nomination__poster-image fade-in'}
                       id={`nominated-image-${i}`}
                       title={ movie.Title }
