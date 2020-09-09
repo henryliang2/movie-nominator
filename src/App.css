@@ -6,9 +6,8 @@ a, a:visited {
 
 .layout__container:first-of-type {
   border: 1px solid #1C2260;
-  background: #41295a;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #230051, #1C2260); 
-  background: linear-gradient(to right, #230051, #1C2260);
+  background: #1c2260;
+  background-color: #1c2260;
 }
 
 .layout__section {
@@ -102,6 +101,10 @@ a, a:visited {
   cursor: pointer;
 }
 
+.signin__button:hover {
+  background-color: #2d3691;
+}
+
 #signin__description {
   color: #888;
   text-align: center;
@@ -118,10 +121,6 @@ a, a:visited {
   color: red;
   text-align: center;
   display: none;
-}
-
-.signin__button:hover {
-  background-color: #6732b3;
 }
 
 .fade-in {
