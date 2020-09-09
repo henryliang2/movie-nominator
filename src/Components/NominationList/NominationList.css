@@ -7,6 +7,15 @@
   margin-bottom: 24px;
 }
 
+.nomination__header {
+  display: block;
+  position: relative;
+  padding: 24px;
+  font-size: 3em;
+  font-weight: 500;
+  color: white;
+}
+
 .nomination__moviecard {
   padding-top: 36px;
   text-align: center;
@@ -111,14 +120,6 @@ always display remove-button */
 
 .nomination__submit-button:hover { 
   background-color: #ccc;
-}
-
-.nomination__header {
-  display: block;
-  padding: 24px;
-  font-size: 3em;
-  font-weight: 500;
-  color: white;
 }
 
 .nomination__ribbon-final { /* image (svg) */

@@ -100,8 +100,27 @@ a, a:visited {
   cursor: pointer;
 }
 
-.signin__button:hover {
-  background-color: #6497ed;
+.signin__button-guest {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 20px;
+
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 500;
+  font-size: 1.2em;
+  color: #1c2260;
+  border: 1px solid #1c2260;
+
+  min-width: 260px;
+  min-height: 52px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.signin__button-guest:hover {
+  background-color: #ddd;
 }
 
 .signin__text {
@@ -115,6 +134,7 @@ a, a:visited {
   color: #888;
   text-align: center;
   display: inline;
+  max-width: 260px;
 }
 
 #signin__processing {
@@ -127,6 +147,14 @@ a, a:visited {
   color: red;
   text-align: center;
   display: none;
+}
+
+.signout__button {
+  min-width: 96px;
+  min-height: 36px;
+  margin: 24px;
+  font-size: 1.2em;
+  color: #1c2260;
 }
 
 .fade-in {

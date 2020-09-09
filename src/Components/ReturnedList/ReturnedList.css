@@ -28,7 +28,7 @@
   display: block;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   .moviecard__overlay:hover .Polaris-Button {
     position: absolute;
     bottom: -36px;

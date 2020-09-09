@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Icon, DisplayText } from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import { TextField, Icon, DisplayText, Button } from '@shopify/polaris';
+import { SearchMinor, LogOutMinor } from '@shopify/polaris-icons';
 import ReturnedList from './Components/ReturnedList/ReturnedList';
 import NominationList from './Components/NominationList/NominationList'
 import firebaseConfig from './firebaseConfig';
@@ -34,7 +34,7 @@ function App() {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   const runOmdbApi = () => {
     setReturnedMovies([]);
@@ -77,7 +77,7 @@ function App() {
     setNominatedMovies(updatedNominationList);
   }
 
-  const signInWithFirebase = async () => {
+  const onSignIn = async () => {
     const descriptionMessage = document.getElementById('signin__description');
     const processingMessage = document.getElementById('signin__processing');
     const errorMessage = document.getElementById('signin__error');
@@ -105,20 +105,28 @@ function App() {
       errorMessage.style.display = 'inline';
     }
   }
+
+  const onSignOut = () => {
+    setInputField('');
+    setReturnedMovies([])
+    setUser(null);
+    setIsSignedIn(false);
+    setIsPopulated(true);
+    setNominatedMovies([]);
+  }
   
   useEffect(() => {
     // update database every time nominatedMovies state is changed
-    if (isSignedIn) {
+    if (isSignedIn && user) {
       const databaseRef = db.collection(user.uid).doc('nominatedMovies');
       databaseRef.set({ nominatedMovies: nominatedMovies })
     }
-  })
+  }, [nominatedMovies]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <React.Fragment>
       <div className='layout__container'>
         <div className='layout__section'>
-
           {/* ---- Display nominated movies if there are any, otherwise display welcome */}
           { (nominatedMovies.length > 0 ) 
 
@@ -143,13 +151,16 @@ function App() {
 
           { !isSignedIn &&
             <div className='signin__container'>
-              <div className='signin__button' onClick={signInWithFirebase}>
+              <div className='signin__button' onClick={onSignIn}>
                 <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
                 <p className='signin__text'>Sign in with Google</p>
               </div>
+              <div className='signin__button-guest' onClick={() => {setIsSignedIn(true)}}>
+                Sign in as Guest
+              </div>
               <p id='signin__description'>
-                We ask you to sign in so that your progress <br/>
-                can be saved if you decide to come back later.
+                We ask you to sign in so that your progress can be saved 
+                if you decide to come back later. 
               </p>
               <p id='signin__processing'>
                 Signing you in ...
@@ -194,6 +205,17 @@ function App() {
             </React.Fragment>
           }
       </div>
+      { isSignedIn &&
+        <div className='signout__button'>
+          <Button outline monochrome 
+            icon={ LogOutMinor } 
+            onClick={onSignOut}
+            >
+              Log out
+          </Button>
+        </div>
+      }
+
     </div>
   </React.Fragment>
   );
