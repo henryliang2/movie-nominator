@@ -79,13 +79,15 @@ function App() {
   }
 
   const onSignIn = async () => {
+    const buttons = document.getElementById('signin__button-container')
     const descriptionMessage = document.getElementById('signin__description');
-    const processingMessage = document.getElementById('signin__processing');
+    const spinner = document.getElementById('signin__processing');
     const errorMessage = document.getElementById('signin__error');
 
+    spinner.style.display = 'inline';
+    buttons.style.display='none';
     descriptionMessage.style.display = 'none';
     errorMessage.style.display = 'none';
-    processingMessage.style.display = 'inline';
 
     try {
       const result = await firebase.auth().signInWithPopup(provider)
@@ -102,8 +104,9 @@ function App() {
     } 
 
     catch(err) {
-      processingMessage.style.display = 'none';
+      buttons.style.display='block';
       errorMessage.style.display = 'inline';
+      spinner.style.display = 'none';
     }
   }
 
@@ -158,23 +161,27 @@ function App() {
           {/* Display signin buttons ONLY IF not signed in */}
           { !isSignedIn &&
             <div className='signin__container'>
-              <div className='signin__button as-user' onClick={onSignIn}>
-                <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
-                <p className='signin__text'>Sign in with Google</p>
+              <div id='signin__button-container'>
+                <div className='signin__button as-user' onClick={onSignIn}>
+                  <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
+                  <p className='signin__text'>Sign in with Google</p>
+                </div>
+                <div className='signin__button as-guest' onClick={() => {setIsSignedIn(true)}}>
+                  Sign in as Guest
+                </div>
               </div>
-              <div className='signin__button as-guest' onClick={() => {setIsSignedIn(true)}}>
-                Sign in as Guest
-              </div>
-              <p id='signin__description'>
+              <div id='signin__description'>
                 We ask you to sign in so that your progress can be saved 
                 if you decide to come back later. 
-              </p>
-              <p id='signin__processing'>
-                <Spinner size="small" color="teal" accessibilityLabel="Signing in ..." />
-              </p>
-              <p id='signin__error'>
+              </div>
+              <div id='signin__processing'>
+                <Spinner size="large" color="teal" accessibilityLabel="Signing in ..." />
+                <br/><br/>
+                Signing you in ...
+              </div>
+              <div id='signin__error'>
                 There was an error signing you in.
-              </p>
+              </div>
             </div>
           }
 
