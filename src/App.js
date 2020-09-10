@@ -170,7 +170,7 @@ function App() {
                 if you decide to come back later. 
               </p>
               <p id='signin__processing'>
-                <Spinner size="large" color="teal" accessibilityLabel="Signing in ..." />
+                <Spinner size="small" color="teal" accessibilityLabel="Signing in ..." />
               </p>
               <p id='signin__error'>
                 There was an error signing you in.
