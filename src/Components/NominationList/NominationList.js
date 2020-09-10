@@ -58,7 +58,7 @@ const NominationList = (props) => {
                       index={ i }
                     />
 
-                    <div className='nomination__remove-button'
+                    <div className='nomination__remove-button fade-in'
                       onClick={ () => { props.removeNomination(i) }}
                       onMouseEnter={() => { setHoveredIcon(i) }}
                       onMouseLeave={() => { setHoveredIcon(-1) }}
