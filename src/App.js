@@ -37,6 +37,9 @@ function App() {
   // user object from firebase, has access to user.uid, user.email, etc
   const [user, setUser] = useState(null);
 
+  // background color of top container; normal = #1C2260 ; darken = #1f0f38
+  const [backgroundColor, setBackgroundColor] = useState('#1C2260')
+
   // Display message based on signInStatus
   // signInStatus: 0 = default/welcome; 1 = processing sign-in; 2 = error
   const [signInStatus, setSignInStatus] = useState(0)
@@ -44,6 +47,7 @@ function App() {
   const defaultSignInMessage = useRef(null)
   const processingSignInMessage = useRef(null)
   const errorSignInMessage = useRef(null)
+  const nominationsContainer = useRef(null)
 
   const runOmdbApi = () => {
     setReturnedMovies([]);
@@ -66,6 +70,7 @@ function App() {
     if ( nominatedMovies.length >= 5 ) {
       return null
     }
+
     // remove all images from 'returned images' section
     setReturnedMovies([]); 
     setNominatedMovies(prevState => {
@@ -155,9 +160,23 @@ function App() {
     }
   }, [nominatedMovies]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // darken background and scroll to top IF signed in and 5 nominations 
+  useEffect(() => {
+    if (isSignedIn && (nominatedMovies.length === 5)){
+      setBackgroundColor('#1f0f38') // set to darken
+      window.scrollTo(0, 0);
+    } else {
+      setBackgroundColor('#1C2260') // set to initial
+    }
+  }, [nominatedMovies.length, isSignedIn])
+
+  useEffect(() => {
+    nominationsContainer.current.style.background = backgroundColor; // update
+  })
+
   return (
     <React.Fragment>
-      <div className='layout__container' id='nomination-container'>
+      <div className='layout__container' id='nomination-container' ref={ nominationsContainer }>
         <div className='layout__section'>
 
           {/* 

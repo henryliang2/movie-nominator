@@ -5,15 +5,9 @@ a, a:visited {
 }
 
 .layout__container:first-of-type {
-  border: 1px solid #1C2260;
   background: #1c2260;
-  background-color: #1c2260;
+  border: 1px solid #1C2260;
   transition: all 0.6s ease-in;
-}
-
-.background-darken {
-  background: #1f0f38 !important;
-  background-color: #1f0f38 !important;
 }
 
 .layout__section {

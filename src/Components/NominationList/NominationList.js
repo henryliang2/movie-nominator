@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 import MovieCard from './../MovieCard/MovieCard';
 import './NominationList.css'
@@ -9,33 +9,12 @@ import { LinkedIn, GitHub, Email }  from '@material-ui/icons';
 
 const NominationList = (props) => {
 
-  const [movies, setMovies] = useState([]);
-
   // hoveredIcon state is the index of the currently hovered button
   // allowing the value to be checked by the icon's color attribute
   const [hoveredIcon, setHoveredIcon] = useState(-1);
 
   // true after submitting nomations
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
-
-  const container = document.getElementById('nomination-container');
-
-  useEffect(() => {
-    /*
-    * when props.nominatedMovies updates, check for length
-    * if there are 5 nominations, scroll to banner and darken bg
-    */
-    setMovies(props.nominatedMovies);
-    if (props.nominatedMovies.length < 5 
-      && container.classList.contains('background-darken')) {
-      container.classList.remove('background-darken');
-    }
-    if (props.nominatedMovies.length > 4) {
-      window.scrollTo(0, 0)
-      container.classList.add('background-darken');
-    }
-  }, [props.nominatedMovies]) // eslint-disable-line react-hooks/exhaustive-deps
-
   /* 
   * this route houses all of the nominations
   */
@@ -44,7 +23,7 @@ const NominationList = (props) => {
     return (
       <React.Fragment>
         <div className='nomination__header'>
-          { movies.length < 5 
+          { props.nominatedMovies.length < 5 
             ? 'My Nominations' 
             : <img alt='Final Nominations' 
                 className='nomination__ribbon-final fade-in' 
@@ -53,9 +32,8 @@ const NominationList = (props) => {
         </div> 
 
         <div className='nomination__container'>
-        
           {
-            movies.map((movie, i) => {
+            props.nominatedMovies.map((movie, i) => {
               return <div className='nomination__moviecard' key={i}>
                   <div className='nomination__poster-container'>
                     <MovieCard
@@ -85,7 +63,7 @@ const NominationList = (props) => {
         </div>
 
         { /* if there are 5 nominations, show submit button */ }
-        { ( movies.length === 5 ) && 
+        { ( props.nominatedMovies.length === 5 ) && 
           <div className='nomination__submit-container'>
             <div onClick={() => { setNominationsSubmitted(true) 
               }} className='nomination__submit-button' >
@@ -153,9 +131,6 @@ const NominationList = (props) => {
                 onClick={() => {
                   props.setNominatedMovies([]);
                   setNominationsSubmitted(false);
-                  if (container.classList.contains('background-darken')) {
-                    container.classList.remove('background-darken')
-                  }
                 }} 
                 >
                 ← Undo All Nominations
