@@ -65,7 +65,9 @@ const NominationList = (props) => {
         { /* if there are 5 nominations, show submit button */ }
         { ( props.nominatedMovies.length === 5 ) && 
           <div className='nomination__submit-container'>
-            <div onClick={() => { setNominationsSubmitted(true) 
+            <div onClick={() => { 
+              setNominationsSubmitted(true);
+              window.scrollTo(0, 0); 
               }} className='nomination__submit-button' >
               Submit →</div>
           </div>
@@ -83,8 +85,8 @@ const NominationList = (props) => {
       return <React.Fragment>
 
           <Confetti
-            width={ window.innerWidth - 100 }
-            height={ window.innerHeight - 100 }
+            width={ window.innerWidth - 40 }
+            height={ window.innerHeight - 40 }
             numberOfPieces={ 400 }
             tweenDuration={ 20000 }
             recycle={ false }
