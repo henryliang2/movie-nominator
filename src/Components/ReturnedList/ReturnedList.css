@@ -64,6 +64,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 960px;
+  margin: auto;
 }
 
 .returnedlist___loading-spinner {

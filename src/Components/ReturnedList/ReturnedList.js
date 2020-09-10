@@ -11,7 +11,7 @@ const ReturnedList = (props) => {
 
   useEffect(() => {
     const array = props.nominatedMovies.map((movie, i) => {
-      return `${movie.Year}${movie.Title}`
+      return movie.imdbID
     })
     setMovieId(array);
   }, [props.nominatedMovies])
@@ -56,7 +56,7 @@ const ReturnedList = (props) => {
                   </p>
 
                   {/* display nominate button only if not already nominated */}
-                  { movieId.includes(`${movie.Year}${movie.Title}`)
+                  { movieId.includes(movie.imdbID)
 
                     ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 

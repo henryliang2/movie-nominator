@@ -43,7 +43,7 @@ function App() {
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
     .then(result => {
-      if(result.Response === 'True') {
+      if (result.Response === 'True') {
         setReturnedMovies(result.Search);
         setIsReturnPopulated(true); 
       } else {

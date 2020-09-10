@@ -36,6 +36,10 @@
   .nomination__moviecard {
     margin: 12px 24px;
   }
+
+  .nomination__moviecard:nth-child(5) {
+    grid-column-end: span 2;
+  }
 }
 
 .nomination__poster-container {
@@ -59,13 +63,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-@media only screen and (max-width: 900px) {
-  .nomination__poster-image {
-    width: 120px;
-    height: 180px;
-  }
 }
 
 /*remove-button is hidden by default*/
