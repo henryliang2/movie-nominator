@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TextField, Icon, DisplayText, Button, Spinner } from '@shopify/polaris';
 import { SearchMinor, LogOutMinor } from '@shopify/polaris-icons';
 import ReturnedList from './Components/ReturnedList/ReturnedList';
@@ -36,6 +36,14 @@ function App() {
 
   // user object from firebase, has access to user.uid, user.email, etc
   const [user, setUser] = useState(null);
+
+  // Display message based on signInStatus
+  // signInStatus: 0 = default/welcome; 1 = processing sign-in; 2 = error
+  const [signInStatus, setSignInStatus] = useState(0)
+  const signInButtons = useRef(null)
+  const defaultSignInMessage = useRef(null)
+  const processingSignInMessage = useRef(null)
+  const errorSignInMessage = useRef(null)
 
   const runOmdbApi = () => {
     setReturnedMovies([]);
@@ -79,15 +87,8 @@ function App() {
   }
 
   const onSignIn = async () => {
-    const buttons = document.getElementById('signin__button-container')
-    const descriptionMessage = document.getElementById('signin__description');
-    const spinner = document.getElementById('signin__processing');
-    const errorMessage = document.getElementById('signin__error');
 
-    spinner.style.display = 'inline';
-    buttons.style.display='none';
-    descriptionMessage.style.display = 'none';
-    errorMessage.style.display = 'none';
+    setSignInStatus(1); // processing message displayed
 
     try {
       const result = await firebase.auth().signInWithPopup(provider)
@@ -100,14 +101,13 @@ function App() {
         const returnedData = returnRef.data();
         setNominatedMovies(returnedData.nominatedMovies);
       }
+      setSignInStatus(0);
       setIsSignedIn(true);
     } 
-
-    catch(err) {
-      buttons.style.display='block';
-      errorMessage.style.display = 'inline';
-      spinner.style.display = 'none';
-    }
+    catch(err) { 
+      console.log(err)
+      setSignInStatus(2) // error message
+    } 
   }
 
   const onSignOut = () => {
@@ -117,10 +117,38 @@ function App() {
     setIsSignedIn(false);
     setIsReturnPopulated(true);
     setNominatedMovies([]);
+    setSignInStatus(0);
   }
-  
+
+  // update sign-in welcome/processing/error message when sign-in state changes
   useEffect(() => {
-    // update database every time nominatedMovies state is changed
+    // reset all to display: none
+    if (!isSignedIn) {
+      signInButtons.current.className = 'display-block';
+      defaultSignInMessage.current.className = 'display-none';
+      processingSignInMessage.current.className = 'display-none';
+      errorSignInMessage.current.className = 'display-none';
+
+      switch(signInStatus) {
+        default:
+          defaultSignInMessage.current.className = 'display-block';
+          break;
+        case 0: // welcome or default
+          defaultSignInMessage.current.className = 'display-block';
+          break;
+        case 1: // processing
+          signInButtons.current.className='display-none';
+          processingSignInMessage.current.className = 'display-block';
+          break;
+        case 2: // error
+          errorSignInMessage.current.className = 'display-block';
+          break;
+      }
+    }
+  }, [signInStatus, isSignedIn])
+  
+  // update database every time nominatedMovies state is changed
+  useEffect(() => {
     if (isSignedIn && user) {
       const databaseRef = db.collection(user.uid).doc('nominatedMovies');
       databaseRef.set({ nominatedMovies: nominatedMovies })
@@ -143,6 +171,7 @@ function App() {
                 nominatedMovies={ nominatedMovies }
                 removeNomination={ removeNomination }
                 setNominatedMovies={ setNominatedMovies }
+                isSignedIn={ isSignedIn }
             />
 
             : <div className='welcome__container'>
@@ -160,8 +189,8 @@ function App() {
         
           {/* Display signin buttons ONLY IF not signed in */}
           { !isSignedIn &&
-            <div className='signin__container'>
-              <div id='signin__button-container'>
+            <div className='signin__container' >
+              <div id='signin__buttons' ref={ signInButtons }>
                 <div className='signin__button as-user' onClick={onSignIn}>
                   <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
                   <p className='signin__text'>Sign in with Google</p>
@@ -170,16 +199,16 @@ function App() {
                   Sign in as Guest
                 </div>
               </div>
-              <div id='signin__description'>
+              <div ref={ defaultSignInMessage } id='signin__description'>
                 We ask you to sign in so that your progress can be saved 
                 if you decide to come back later. 
               </div>
-              <div id='signin__processing'>
+              <div ref={ processingSignInMessage } id='signin__processing'>
                 <Spinner size="large" color="teal" accessibilityLabel="Signing in ..." />
                 <br/><br/>
-                Signing you in ...
+                Signing you in
               </div>
-              <div id='signin__error'>
+              <div ref={ errorSignInMessage } id='signin__error'>
                 There was an error signing you in.
               </div>
             </div>

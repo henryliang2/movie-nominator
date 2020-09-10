@@ -143,13 +143,11 @@ a, a:visited {
 #signin__processing {
   color: #888;
   text-align: center;
-  display: none;
 }
 
 #signin__error {
   color: red;
   text-align: center;
-  display: none;
 }
 
 .signout__button {
@@ -158,6 +156,14 @@ a, a:visited {
   margin: 24px;
   font-size: 1.2em;
   color: #1c2260;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-block {
+  display: block !important;
 }
 
 .fade-in {
