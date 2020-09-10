@@ -30,7 +30,7 @@ function App() {
 
   // boolean; true if at least one movie returned from query, false otherwise
   // initial state is true so that 'no movies found' is not showing
-  const [isPopulated, setIsPopulated] = useState(true);
+  const [isReturnPopulated, setIsReturnPopulated] = useState(true);
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
@@ -45,9 +45,9 @@ function App() {
     .then(result => {
       if(result.Response === 'True') {
         setReturnedMovies(result.Search);
-        setIsPopulated(true); 
+        setIsReturnPopulated(true); 
       } else {
-        setIsPopulated(false);
+        setIsReturnPopulated(false);
       }
     })
     .then(setAwaitingApiResponse(false))
@@ -112,7 +112,7 @@ function App() {
     setReturnedMovies([])
     setUser(null);
     setIsSignedIn(false);
-    setIsPopulated(true);
+    setIsReturnPopulated(true);
     setNominatedMovies([]);
   }
   
@@ -202,7 +202,7 @@ function App() {
               </form>
 
               { /* ----- Movies Returned from API Call (Display only if movies returned) ----- */}
-              { isPopulated
+              { isReturnPopulated
                 ? <ReturnedList
                     returnedMovies={ returnedMovies }
                     nominatedMovies={ nominatedMovies}
