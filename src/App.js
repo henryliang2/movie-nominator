@@ -202,7 +202,7 @@ function App() {
                 <TextField autoFocus
                   type='text'
                   value={inputField}
-                  placeholder='Search Movies'
+                  placeholder='Search for a Movie'
                   prefix={<Icon source={SearchMinor} color="inkLighter" />}
                   onChange={(e) => { setInputField(e)}}>
                 </TextField>
