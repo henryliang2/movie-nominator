@@ -18,23 +18,32 @@ const NominationList = (props) => {
   // true after submitting nomations
   const [nominationsSubmitted, setNominationsSubmitted] = useState(false);
 
-  const headerRef = useRef(null)
+  const container = document.getElementById('nomination-container');
 
   useEffect(() => {
+    /*
+    * when props.nominatedMovies updates, check for length
+    * if there are 5 nominations, scroll to banner and darken bg
+    */
     setMovies(props.nominatedMovies);
-    if (props.nominatedMovies.length > 4) {
-      window.scrollTo(0, headerRef.current.offsetTop)
+    if (props.nominatedMovies.length < 5 
+      && container.classList.contains('background-darken')) {
+      container.classList.remove('background-darken');
     }
-  }, [props.nominatedMovies])
+    if (props.nominatedMovies.length > 4) {
+      window.scrollTo(0, 0)
+      container.classList.add('background-darken');
+    }
+  }, [props.nominatedMovies]) // eslint-disable-line react-hooks/exhaustive-deps
 
   /* 
-  * this page houses all of the nominations
+  * this route houses all of the nominations
   */
   if (nominationsSubmitted === false) {
 
     return (
       <React.Fragment>
-        <div className='nomination__header' ref={ headerRef }>
+        <div className='nomination__header'>
           { movies.length < 5 
             ? 'My Nominations' 
             : <img alt='Final Nominations' 
@@ -89,7 +98,7 @@ const NominationList = (props) => {
 
 
     /* 
-    * this page appears after user nominates 5 movies and submits them
+    * this route appears after user submits the 5 nominations
     */
     } else if (nominationsSubmitted === true) {
 
@@ -144,6 +153,9 @@ const NominationList = (props) => {
                 onClick={() => {
                   props.setNominatedMovies([]);
                   setNominationsSubmitted(false);
+                  if (container.classList.contains('background-darken')) {
+                    container.classList.remove('background-darken')
+                  }
                 }} 
                 >
                 ← Undo All Nominations

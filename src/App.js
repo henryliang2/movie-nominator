@@ -129,7 +129,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <div className='layout__container'>
+      <div className='layout__container' id='nomination-container'>
         <div className='layout__section'>
 
           {/* 
@@ -140,9 +140,9 @@ function App() {
           { (nominatedMovies.length > 0 ) 
 
             ? <NominationList 
-              nominatedMovies={ nominatedMovies }
-              removeNomination={ removeNomination }
-              setNominatedMovies={ setNominatedMovies }
+                nominatedMovies={ nominatedMovies }
+                removeNomination={ removeNomination }
+                setNominatedMovies={ setNominatedMovies }
             />
 
             : <div className='welcome__container'>
