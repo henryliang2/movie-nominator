@@ -27,7 +27,7 @@
   color: white;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
   .nomination__container { 
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -136,7 +136,7 @@ always display remove-button */
   color: white;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
   .endgame__container { 
     padding: 24px;
   }

@@ -64,7 +64,7 @@ function App() {
     })
     .then(setAwaitingApiResponse(false))
     setInputField('');
-    if (window.innerWidth < 800 && nominatedMovies.length < 1) { 
+    if (window.innerWidth < 1025 && nominatedMovies.length < 1) { 
       window.scrollTo(0, 360) 
     }
   }
