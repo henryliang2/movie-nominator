@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Icon, DisplayText, Button } from '@shopify/polaris';
+import { TextField, Icon, DisplayText, Button, Spinner } from '@shopify/polaris';
 import { SearchMinor, LogOutMinor } from '@shopify/polaris-icons';
 import ReturnedList from './Components/ReturnedList/ReturnedList';
 import NominationList from './Components/NominationList/NominationList'
@@ -34,6 +34,7 @@ function App() {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
 
+  // user object from firebase, has access to user.uid, user.email, etc
   const [user, setUser] = useState(null);
 
   const runOmdbApi = () => {
@@ -127,7 +128,12 @@ function App() {
     <React.Fragment>
       <div className='layout__container'>
         <div className='layout__section'>
-          {/* ---- Display nominated movies if there are any, otherwise display welcome */}
+
+          {/* 
+            Display nominated movies if there are any,
+            otherwise display welcome message
+          */}
+
           { (nominatedMovies.length > 0 ) 
 
             ? <NominationList 
@@ -148,14 +154,15 @@ function App() {
 
       <div className='layout__container'>
         <div className='layout__section'>
-
+        
+          {/* Display signin buttons ONLY IF not signed in */}
           { !isSignedIn &&
             <div className='signin__container'>
-              <div className='signin__button' onClick={onSignIn}>
+              <div className='signin__button as-user' onClick={onSignIn}>
                 <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
                 <p className='signin__text'>Sign in with Google</p>
               </div>
-              <div className='signin__button-guest' onClick={() => {setIsSignedIn(true)}}>
+              <div className='signin__button as-guest' onClick={() => {setIsSignedIn(true)}}>
                 Sign in as Guest
               </div>
               <p id='signin__description'>
@@ -163,7 +170,7 @@ function App() {
                 if you decide to come back later. 
               </p>
               <p id='signin__processing'>
-                Signing you in ...
+                <Spinner size="large" color="teal" accessibilityLabel="Signing in ..." />
               </p>
               <p id='signin__error'>
                 There was an error signing you in.
@@ -171,9 +178,11 @@ function App() {
             </div>
           }
 
-          {/* ----- Display Searchbox and Returned movies only if nominated movies is 5 -----*/}
-          { (nominatedMovies.length < 5 && isSignedIn) &&
+          {/* 
+            Display Searchbox and Returned movies ONLY IF there are fewer than 5 movies nominated
+           */}
 
+          { (nominatedMovies.length < 5 && isSignedIn) &&
             <React.Fragment>
               <div className='searchfield__header'>
                 <DisplayText> Please nominate five movies for this year's awards.</DisplayText>
