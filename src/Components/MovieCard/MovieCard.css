@@ -3,7 +3,7 @@
   width: 160px;
   height: 240px;
   object-fit: cover;
-
+  display: none;
   opacity: 0;
 }
 
@@ -13,6 +13,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.moviecard__loading-spinner {
+  width: 160px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .moviecard__overlay {
@@ -34,4 +42,13 @@
   text-align: center;
 
   opacity: 0;
+}
+
+.moviecard__placeholder {
+  margin: 20px;
+  width: 160px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

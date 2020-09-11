@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { Heading } from '@shopify/polaris';
+import { Heading, Spinner } from '@shopify/polaris';
 import './MovieCard.css'
 
 const MovieCard = (props) => {
 
   const imageRef = useRef(null);
 
-  const [hasImageError, setHasImageError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [hasError, setHasError] = useState(false);
 
   return (
     <React.Fragment>
@@ -20,14 +22,22 @@ const MovieCard = (props) => {
         }
         onError={() => {
           imageRef.current.src=`${process.env.PUBLIC_URL}poster-blank.jpg`;
-          setHasImageError(true);
+          setHasError(true);
         }}
         onLoad={() => { 
+          imageRef.current.style.display = 'inline-block'
+          setIsLoading(false);
           imageRef.current.classList.add('fade-in'); 
         }}
       />
-      {/* only show poster-title if poster is N/A or there is an error */}
-      { (props.posterUrl === 'N/A' || hasImageError === true) && 
+
+      { isLoading &&
+        <div className='moviecard__placeholder'>
+          <Spinner size="small" color="teal" accessibilityLabel="Loading image .." />
+        </div>
+      }
+
+      { (props.posterUrl === 'N/A' || hasError === true) && 
         <div className='nomination__poster-title'>
           <Heading>{ props.title }</Heading>
         </div>
