@@ -1,6 +1,6 @@
 ## Shoppies Nominator App
-It's time to nominate your favourite films for this year's awards!  
-This app was made for the UX Developer Intern & Web Developer Intern Challenge.
+It's time to nominate your favourite films for this year's awards!  This app was made for the Winter  
+2021 UX Developer Intern & Web Developer Intern Challenge.
   
 Made using ReactJS and uses Firebase for authentication and database services.  
   
