@@ -26,7 +26,7 @@ const MovieCard = (props) => {
           setHasError(true);
         }}
         onLoad={() => { 
-          imageRef.current.style.display = 'inline-block'
+          imageRef.current.style.display = 'inline-block' // default is 'display: none' set in CSS
           setIsLoading(false);
           imageRef.current.classList.add('fade-in'); 
         }}
@@ -39,7 +39,7 @@ const MovieCard = (props) => {
         </div>
       }
 
-      { // Replace with blank poster if image src returns "not found"
+      { // Show title over generic image if no image
         (props.posterUrl === 'N/A' || hasError === true) && 
           <div className='nomination__poster-title'>
             <Heading>{ props.title }</Heading>
