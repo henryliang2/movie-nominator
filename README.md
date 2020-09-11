@@ -13,8 +13,10 @@ See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://sh
 ## Design Notes  
 This app was designed and built with user experience and usability principles in mind. I made sure to  
 focus on simplicity and providing the user with each new task in a clear and stepwise fashion. The  
-controls were made to be intuitive and easy for the user to discover organically. In addition,  
-controls are also removed when appropriate in order to limit any confusion.  
+controls were made to be intuitive and easy for the user to discover organically. Controls are also  
+removed when appropriate in order to limit any confusion.  After the user nominates their fifth and  
+final movie, the view is designed to change stylistically to imbue a sense of gravity in the user's  
+actions - that their decision matters.  
     
 ![](public/ux-flow.png)
   
