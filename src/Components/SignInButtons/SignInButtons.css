@@ -1,0 +1,69 @@
+.signin__container {
+  min-height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signin__button {
+  display: flex;
+  align-items: center;
+  
+  border-radius: 4px;
+  margin-bottom: 16px;
+
+  font-family: 'Roboto', 'Arial', 'sans-serif';
+  font-weight: 500;
+  font-size: 1em;
+
+  min-width: 260px;
+  min-height: 52px;
+  padding: 4px;
+
+  cursor: pointer;
+}
+
+  .as-user {
+    background-color: #4285F4;
+    color: white;
+  }
+
+  .as-user:hover {
+    background-color: #5f94ed;
+  }
+
+  .as-guest {
+    justify-content: center;
+    font-size: 1.1em;
+    color: #1c2260;
+    border: 1px solid #1c2260;
+  }
+
+  .as-guest:hover {
+    background-color: #ddd;
+  }
+
+.signin__text {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#signin__description {
+  color: #888;
+  text-align: center;
+  display: inline;
+  max-width: 260px;
+}
+
+#signin__processing {
+  color: #888;
+  text-align: center;
+}
+
+#signin__error {
+  color: red;
+  text-align: center;
+}

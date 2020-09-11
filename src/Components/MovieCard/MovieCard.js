@@ -26,8 +26,8 @@ const MovieCard = (props) => {
           setHasError(true);
         }}
         onLoad={() => { 
-          imageRef.current.style.display = 'inline-block' // default is 'display: none' set in CSS
           setIsLoading(false);
+          imageRef.current.style.display = 'inline-block' // default is 'display: none' set in CSS
           imageRef.current.classList.add('fade-in'); 
         }}
       />

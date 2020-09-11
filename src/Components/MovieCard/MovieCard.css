@@ -1,5 +1,4 @@
 .moviecard__image {
-  margin: 20px;
   width: 160px;
   height: 240px;
   object-fit: cover;
@@ -45,7 +44,6 @@
 }
 
 .moviecard__placeholder {
-  margin: 20px;
   width: 160px;
   height: 240px;
   display: flex;

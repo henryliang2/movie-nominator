@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TextField, Icon, DisplayText, Button, Spinner } from '@shopify/polaris';
+import { TextField, Icon, DisplayText, Button } from '@shopify/polaris';
 import { SearchMinor, LogOutMinor } from '@shopify/polaris-icons';
 import ReturnedList from './Components/ReturnedList/ReturnedList';
 import NominationList from './Components/NominationList/NominationList'
+import SignInButtons from './Components/SignInButtons/SignInButtons'
 import firebaseConfig from './firebaseConfig';
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -40,15 +41,10 @@ function App() {
   // background color of top container; normal = #1C2260 ; darken = #1f0f38
   const [backgroundColor, setBackgroundColor] = useState('#1C2260');
 
-  // Display message based on signInStatus
-  // signInStatus: 0 = default/welcome; 1 = processing sign-in; 2 = error
-  const [signInStatus, setSignInStatus] = useState(0);
+  // Display message based on signInMessage
+  // signInMessage: 0 = default/welcome; 1 = processing sign-in; 2 = error
+  const [signInMessage, setSignInMessage] = useState('default');
 
-  // a bunch of refs
-  const signInButtons = useRef();
-  const defaultSignInMessage = useRef();
-  const processingSignInMessage = useRef();
-  const errorSignInMessage = useRef();
   const nominationsContainer = useRef();
 
   const runOmdbApi = () => {
@@ -96,7 +92,7 @@ function App() {
 
   const onSignIn = async () => {
 
-    setSignInStatus(1); // display 'processing sign-in' message
+    setSignInMessage('processing'); // display 'processing sign-in' message
 
     try {
       const result = await firebase.auth().signInWithPopup(provider)
@@ -109,12 +105,12 @@ function App() {
         const returnedData = returnRef.data();
         setNominatedMovies(returnedData.nominatedMovies);
       }
-      setSignInStatus(0); // signInStatus: 0 = default/welcome message
+      setSignInMessage('default'); // signInMessage: 0 = default/welcome message
       setIsSignedIn(true);
     } 
     catch(err) { 
       console.log(err)
-      setSignInStatus(2) // show error message
+      setSignInMessage('error') // show error message
     } 
   }
 
@@ -128,35 +124,8 @@ function App() {
     // it will trigger a useEffect when it clears the state and then update 
     // the database to be an empty array. >=((((
     setNominatedMovies([]);
-    setSignInStatus(0); // signInStatus: 0 = default/welcome message
+    setSignInMessage('default'); // signInMessage: 0 = default/welcome message
   }
-
-  // update sign-in welcome/processing/error message when sign-in state changes
-  useEffect(() => {
-    if (!isSignedIn) {
-      // reset all to display: none
-      signInButtons.current.className = 'display-block';
-      defaultSignInMessage.current.className = 'display-none';
-      processingSignInMessage.current.className = 'display-none';
-      errorSignInMessage.current.className = 'display-none';
-
-      switch(signInStatus) {
-        default:
-          defaultSignInMessage.current.className = 'display-block';
-          break;
-        case 0: // welcome or default
-          defaultSignInMessage.current.className = 'display-block';
-          break;
-        case 1: // processing
-          signInButtons.current.className='display-none';
-          processingSignInMessage.current.className = 'display-block';
-          break;
-        case 2: // error
-          errorSignInMessage.current.className = 'display-block';
-          break;
-      }
-    }
-  }, [signInStatus, isSignedIn])
   
   // update database every time nominatedMovies state is changed
   useEffect(() => {
@@ -197,13 +166,12 @@ function App() {
                 isSignedIn={ isSignedIn }
             />
             : <div className='welcome__container'>
-              <img id='shoppies-logo' 
-                alt='Shoppies Award Logo' 
-                src={process.env.PUBLIC_URL + 'award_logo.svg'} />
-              <div className='welcome__title'>It's time to nominate your favourite films.</div>
-            </div> 
+                <img id='shoppies-logo' 
+                  alt='Shoppies Award Logo' 
+                  src={process.env.PUBLIC_URL + 'award_logo.svg'} />
+                <div className='welcome__title'>It's time to nominate your favourite films.</div>
+              </div> 
           }
-
         </div>
       </div>
 
@@ -212,31 +180,14 @@ function App() {
       }
       <div className='layout__container'>
         <div className='layout__section'>
+
           {// Display signin buttons ONLY IF not signed in
             !isSignedIn &&
-            <div className='signin__container' >
-              <div id='signin__buttons' ref={ signInButtons }>
-                <div className='signin__button as-user' onClick={onSignIn}>
-                  <img alt='Sign-in button' src={process.env.PUBLIC_URL + 'google_icon.svg'}/>
-                  <p className='signin__text'>Sign in with Google</p>
-                </div>
-                <div className='signin__button as-guest' onClick={() => {setIsSignedIn(true)}}>
-                  Sign in as Guest
-                </div>
-              </div>
-              <div ref={ defaultSignInMessage } id='signin__description'>
-                We ask you to sign in so that your progress can be saved 
-                if you decide to come back later. 
-              </div>
-              <div ref={ processingSignInMessage } id='signin__processing'>
-                <Spinner size="large" color="teal" accessibilityLabel="Signing in ..." />
-                <br/><br/>
-                Signing you in
-              </div>
-              <div ref={ errorSignInMessage } id='signin__error'>
-                There was an error signing you in.
-              </div>
-            </div>
+            <SignInButtons
+              onSignIn={ onSignIn }
+              setIsSignedIn={ setIsSignedIn }
+              signInMessage={ signInMessage }
+            />
           }
 
           {// Display Searchbox and Returned movies ONLY IF there are fewer than 5 movies nominated

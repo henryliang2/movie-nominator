@@ -3,6 +3,7 @@
 .moviecard__container {
   display: inline-block;
   position: relative;
+  padding: 20px;
 }
 
 .moviecard__container > img, .poster__blank {
