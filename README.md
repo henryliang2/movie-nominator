@@ -7,6 +7,8 @@ Made using ReactJS and uses Firebase for authentication and database services.
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)
 
 ## Demonstration
+  
+  
 ![](public/demo.gif)
   
 ## Design Notes  
@@ -14,7 +16,8 @@ This app was designed and built from the start with user experience and usabilit
 I made sure to focus on simplicity and providing the user with each new task in a clear and stepwise  
 fashion. The controls were made to be intuitive and easy for the user to discover organically. In  
 addition, controls are also removed when appropriate in order to limit any confusion.
-
+  
+    
 ![](public/ux-flow.png)
   
 ## Challenge Details
