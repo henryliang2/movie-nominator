@@ -5,39 +5,27 @@ import './ReturnedList.css'
 
 const ReturnedList = (props) => {
 
-  const [movieId, setMovieId] = useState([])
+  const [movieIdArray, setMovieIdArray] = useState([])
 
-  const [titleArray, setTitleArray] = useState([])
-
+  // an array of the  Movie IMDB ids of nominated movies
   useEffect(() => {
-    const array = props.nominatedMovies.map((movie, i) => {
-      return movie.imdbID
-    })
-    setMovieId(array);
+    const array = props.nominatedMovies.map(movie => { return movie.imdbID })
+    setMovieIdArray(array);
   }, [props.nominatedMovies])
-
-  // smaller font size for title if title is very large
-  useEffect(() => {
-    const array = props.returnedMovies.map((movie, i) => {
-        return ( movie.Title.length > 40
-        ? 'moviecard__movie-title-small' 
-        : 'moviecard__movie-title'
-      )
-    });
-    setTitleArray(array)
-  }, [props.returnedMovies])
   
   return (
     <div className='returnedlist__container'>
 
-      {/*  if awaiting Api Response, show spinner, else show content */}
-      { props.awaitingApiResponse
+      { //  if awaiting Api Response, show spinner
+        props.awaitingApiResponse
 
         ? <div className='returnedlist___loading-spinner'>
             <Spinner size="large" color="teal" accessibilityLabel="Loading ..." />
           </div>
-
-        : props.returnedMovies.map((movie, i) => {
+      
+        // if API response received, show content
+        : <React.Fragment>
+          { props.returnedMovies.map((movie, i) => {
             return (
               <div key={i} className='moviecard__container'>
                 <MovieCard
@@ -49,14 +37,19 @@ const ReturnedList = (props) => {
                   index={ i }
                 />
                 
+                { // Overlay that darkens and displays title + year onMouseOver    
+                }
                 <div className='moviecard__overlay'>
-                  <p className={titleArray[i]}>
+                  <p className={ movie.Title.length > 40 
+                    ? 'moviecard__movie-title-small' 
+                    : 'moviecard__movie-title'
+                  }>
                     { movie.Title }<br />
                     { `(${movie.Year})` }
                   </p>
 
-                  {/* display nominate button only if not already nominated */}
-                  { movieId.includes(movie.imdbID)
+                  { // display nominate button only if not already nominated 
+                    movieIdArray.includes(movie.imdbID)
 
                     ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
 
@@ -68,9 +61,8 @@ const ReturnedList = (props) => {
                       </Button> 
                   }
                 </div>
-              </div> 
-            )}
-          )
+              </div> )})}
+          </React.Fragment>
       }
     </div>
   );

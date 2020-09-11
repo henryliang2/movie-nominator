@@ -38,19 +38,21 @@ function App() {
   const [user, setUser] = useState(null);
 
   // background color of top container; normal = #1C2260 ; darken = #1f0f38
-  const [backgroundColor, setBackgroundColor] = useState('#1C2260')
+  const [backgroundColor, setBackgroundColor] = useState('#1C2260');
 
   // Display message based on signInStatus
   // signInStatus: 0 = default/welcome; 1 = processing sign-in; 2 = error
-  const [signInStatus, setSignInStatus] = useState(0)
-  const signInButtons = useRef(null)
-  const defaultSignInMessage = useRef(null)
-  const processingSignInMessage = useRef(null)
-  const errorSignInMessage = useRef(null)
-  const nominationsContainer = useRef(null)
+  const [signInStatus, setSignInStatus] = useState(0);
+
+  // a bunch of refs
+  const signInButtons = useRef();
+  const defaultSignInMessage = useRef();
+  const processingSignInMessage = useRef();
+  const errorSignInMessage = useRef();
+  const nominationsContainer = useRef();
 
   const runOmdbApi = () => {
-    setReturnedMovies([]);
+    setReturnedMovies([]); // clear any existing movies from previous API call
     setAwaitingApiResponse(true);
     fetch(`https://www.omdbapi.com/?s=*${inputField}*&apikey=${API_KEY}&type=movie`)
     .then(jsonData => jsonData.json())
@@ -64,57 +66,55 @@ function App() {
     })
     .then(setAwaitingApiResponse(false))
     setInputField('');
+    // after first query on mobile, scroll to returned movie to guide user's eyes
     if (window.innerWidth < 1025 && nominatedMovies.length < 1) { 
       window.scrollTo(0, 360) 
     }
   }
 
   const nominateMovie = (idx) => {
+    // Can't nominate more than 5 movies
     if ( nominatedMovies.length >= 5 ) {
       return null
     }
-
     // remove all images from 'returned images' section
     setReturnedMovies([]); 
     setNominatedMovies(prevState => {
       return [...prevState, returnedMovies[idx]]
     });
-
     // refocus inputField
-    try {
-      if (nominatedMovies.length < 5) {
-        document.getElementsByClassName('Polaris-TextField__Input')[0].focus();
-      }
-    } catch(err) { console.log(err) }
+    if (nominatedMovies.length < 5) {
+      document.getElementsByClassName('Polaris-TextField__Input')[0].focus();
+    }
   } 
 
   const removeNomination = (idx) => {
-    let updatedNominationList = Object.assign([], nominatedMovies);
-    updatedNominationList.splice(idx, 1);
-    setNominatedMovies(updatedNominationList);
+    let newList = Object.assign([], nominatedMovies);
+    newList.splice(idx, 1);
+    setNominatedMovies(newList);
   }
 
   const onSignIn = async () => {
 
-    setSignInStatus(1); // processing message displayed
+    setSignInStatus(1); // display 'processing sign-in' message
 
     try {
       const result = await firebase.auth().signInWithPopup(provider)
       await setUser(result.user);
 
-      // get nominations from database and set back into state
+      // get nominations from database and set as nominatedMovies state
       const databaseRef = db.collection(result.user.uid).doc('nominatedMovies');
       const returnRef = await databaseRef.get()
       if (returnRef.exists) {
         const returnedData = returnRef.data();
         setNominatedMovies(returnedData.nominatedMovies);
       }
-      setSignInStatus(0);
+      setSignInStatus(0); // signInStatus: 0 = default/welcome message
       setIsSignedIn(true);
     } 
     catch(err) { 
       console.log(err)
-      setSignInStatus(2) // error message
+      setSignInStatus(2) // show error message
     } 
   }
 
@@ -124,14 +124,17 @@ function App() {
     setUser(null);
     setIsSignedIn(false);
     setIsReturnPopulated(true);
+    // setNominatedMovies MUST COME AFTER setUser and setIsSignedIn, or else
+    // it will trigger a useEffect when it clears the state and then update 
+    // the database to be an empty array. >=((((
     setNominatedMovies([]);
-    setSignInStatus(0);
+    setSignInStatus(0); // signInStatus: 0 = default/welcome message
   }
 
   // update sign-in welcome/processing/error message when sign-in state changes
   useEffect(() => {
-    // reset all to display: none
     if (!isSignedIn) {
+      // reset all to display: none
       signInButtons.current.className = 'display-block';
       defaultSignInMessage.current.className = 'display-none';
       processingSignInMessage.current.className = 'display-none';
@@ -174,43 +177,43 @@ function App() {
   }, [nominatedMovies.length, isSignedIn])
 
   useEffect(() => {
-    nominationsContainer.current.style.background = backgroundColor; // update
+    nominationsContainer.current.style.background = backgroundColor; 
   })
 
   return (
     <React.Fragment>
+      {
+        // ----- Nominations Container -----
+      }
       <div className='layout__container' id='nomination-container' ref={ nominationsContainer }>
         <div className='layout__section'>
 
-          {/* 
-            Display nominated movies if there are any,
-            otherwise display welcome message
-          */}
-
-          { (nominatedMovies.length > 0 ) 
-
+          { // Display nominated movies if there are any, otherwise display welcome message
+          nominatedMovies.length > 0
             ? <NominationList 
                 nominatedMovies={ nominatedMovies }
                 removeNomination={ removeNomination }
                 setNominatedMovies={ setNominatedMovies }
                 isSignedIn={ isSignedIn }
             />
-
             : <div className='welcome__container'>
               <img id='shoppies-logo' 
                 alt='Shoppies Award Logo' 
                 src={process.env.PUBLIC_URL + 'award_logo.svg'} />
               <div className='welcome__title'>It's time to nominate your favourite films.</div>
-            </div>
+            </div> 
           }
+
         </div>
       </div>
 
+      {
+        // ----- Searchbox and API Response container -----
+      }
       <div className='layout__container'>
         <div className='layout__section'>
-        
-          {/* Display signin buttons ONLY IF not signed in */}
-          { !isSignedIn &&
+          {// Display signin buttons ONLY IF not signed in
+            !isSignedIn &&
             <div className='signin__container' >
               <div id='signin__buttons' ref={ signInButtons }>
                 <div className='signin__button as-user' onClick={onSignIn}>
@@ -236,11 +239,8 @@ function App() {
             </div>
           }
 
-          {/* 
-            Display Searchbox and Returned movies ONLY IF there are fewer than 5 movies nominated
-           */}
-
-          { (nominatedMovies.length < 5 && isSignedIn) &&
+          {// Display Searchbox and Returned movies ONLY IF there are fewer than 5 movies nominated
+            (nominatedMovies.length < 5 && isSignedIn) &&
             <React.Fragment>
               <div className='searchfield__header'>
                 <DisplayText> Please nominate five movies for this year's awards.</DisplayText>
@@ -259,8 +259,8 @@ function App() {
                 </TextField>
               </form>
 
-              { /* ----- Movies Returned from API Call (Display only if movies returned) ----- */}
-              { isReturnPopulated
+              { /// Displey Movies Returned from API call only if movies returned
+                isReturnPopulated
                 ? <ReturnedList
                     returnedMovies={ returnedMovies }
                     nominatedMovies={ nominatedMovies}
@@ -272,7 +272,9 @@ function App() {
             </React.Fragment>
           }
       </div>
-      { isSignedIn &&
+      
+      { // Display signout button only if already signed in
+        isSignedIn &&
         <div className='signout__button'>
           <Button outline monochrome 
             icon={ LogOutMinor } 

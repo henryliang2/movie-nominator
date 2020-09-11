@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import MovieCard from './../MovieCard/MovieCard';
 import './NominationList.css'
@@ -78,14 +78,14 @@ const DisplayNominations = (props) => {
 
       </div>
 
-      { /* if there are 5 nominations, show submit button */ }
-      { ( props.nominatedMovies.length === 5 ) && 
+      { // if there are 5 nominations, show continue button
+        ( props.nominatedMovies.length === 5 ) && 
         <div className='nomination__submit-container'>
           <div onClick={() => { 
             props.setIsSubmitted(true);
             window.scrollTo(0, 0); 
             }} className='nomination__submit-button' >
-            Submit →</div>
+            Continue →</div>
         </div>
       }
 
@@ -109,7 +109,7 @@ const DisplayPortfolio = (props) => {
         <DisplayText 
           element='h1'
           size='extraLarge'>
-            Hooray! Your nominations have been submitted.
+            Hooray! Your nominations have been recorded.
         </DisplayText>
 
         <p>Thank you for checking out my project. I hope you liked it!</p>

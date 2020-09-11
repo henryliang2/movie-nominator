@@ -16,7 +16,8 @@ const MovieCard = (props) => {
         alt={ props.title }
         ref={imageRef}
         id={props.id}
-        src={ (props.posterUrl !== 'N/A')
+        src={ 
+          props.posterUrl !== 'N/A'
           ? props.posterUrl
           : `${process.env.PUBLIC_URL}poster-blank.jpg`
         }
@@ -31,18 +32,19 @@ const MovieCard = (props) => {
         }}
       />
 
-      { isLoading &&
+      { // Replace with loading spinner if isLoading
+        isLoading &&
         <div className='moviecard__placeholder'>
           <Spinner size="small" color="teal" accessibilityLabel="Loading image .." />
         </div>
       }
 
-      { (props.posterUrl === 'N/A' || hasError === true) && 
-        <div className='nomination__poster-title'>
-          <Heading>{ props.title }</Heading>
-        </div>
+      { // Replace with blank poster if image src returns "not found"
+        (props.posterUrl === 'N/A' || hasError === true) && 
+          <div className='nomination__poster-title'>
+            <Heading>{ props.title }</Heading>
+          </div>
       }
-
     </React.Fragment>
   );
   
