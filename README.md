@@ -2,7 +2,7 @@
 It's time to nominate your favourite films for this year's awards!  This app was made for the Winter  
 2021 UX Developer Intern & Web Developer Intern Challenge.
   
-Made using ReactJS and uses Firebase for authentication and database services.  
+Made using ReactJS and Firebase for authentication and database services.  
   
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)
 
@@ -15,8 +15,8 @@ This app was designed and built with user experience and usability principles in
 focus on simplicity and providing the user with each new task in a clear and stepwise fashion. The  
 controls were made to be intuitive and easy for the user to discover organically. Controls are also  
 removed when appropriate in order to limit any confusion.  After the user nominates their fifth and  
-final movie, the view is designed to change stylistically to imbue a sense of gravity in the user's  
-actions - that their decision matters.  
+final movie, the interface is designed to change stylistically to imbue a sense of gravity in the  
+user's actions and the feeling that their decision matters.  
     
 ![](public/ux-flow.png)
   
