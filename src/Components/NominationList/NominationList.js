@@ -140,7 +140,7 @@ const DisplayPortfolio = (props) => {
               props.setIsSubmitted(false);
             }} 
             >
-            ← Back to your Nominations
+            ← Change your Nominations
           </div>
           <div className='submit__button'
             onClick={() => {
