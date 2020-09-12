@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import MovieCard from './../MovieCard/MovieCard';
-import './NominationList.css'
+import '../MovieCard/MovieCard.css';
+import './NominationList.css';
 import { CircleCancelMajorTwotone } from '@shopify/polaris-icons';
 import { Icon, DisplayText } from '@shopify/polaris';
 import { LinkedIn, GitHub, Email }  from '@material-ui/icons';
@@ -38,22 +39,22 @@ const NominationList = (props) => {
 const DisplayNominations = (props) => {
   return (
     <React.Fragment>
-      <div className='nomination__header'>
+      <div className='nominations__header'>
         { props.nominatedMovies.length < 5 
           ? 'My Nominations' 
           : <img alt='Final Nominations' 
-              className='nomination__ribbon-final fade-in' 
+              className='nominations__ribbon fade-in' 
               src={process.env.PUBLIC_URL + 'ribbon.svg'} /> 
         }
       </div> 
 
-      <div className='nomination__container'>
+      <div className='nominations__container'>
         {
           props.nominatedMovies.map((movie, i) => {
-            return <div className='nomination__moviecard' key={i}>
-                <div className='nomination__poster-container'>
+            return <div className='nominated' key={i}>
+                <div className='nominated__image-wrapper'>
                   <MovieCard
-                    classNames={'nomination__poster-image fade-in'}
+                    classNames={'card__image card__image--shadow'}
                     id={`nominated-image-${i}`}
                     title={ movie.Title }
                     posterUrl={ movie.Poster }
@@ -61,7 +62,7 @@ const DisplayNominations = (props) => {
                     index={ i }
                   />
 
-                  <div className='nomination__remove-button fade-in'
+                  <div className='nominated__remove-button fade-in'
                     onClick={ () => { props.removeNomination(i) }}
                     onMouseEnter={() => { props.setHoveredIcon(i) }}
                     onMouseLeave={() => { props.setHoveredIcon(-1) }}
@@ -80,11 +81,11 @@ const DisplayNominations = (props) => {
 
       { // if there are 5 nominations, show continue button
         ( props.nominatedMovies.length === 5 ) && 
-        <div className='nomination__submit-container'>
+        <div className='submit'>
           <div onClick={() => { 
             props.setIsSubmitted(true);
             window.scrollTo(0, 0); 
-            }} className='nomination__submit-button' >
+            }} className='submit__button' >
             Continue →</div>
         </div>
       }
@@ -105,7 +106,7 @@ const DisplayPortfolio = (props) => {
         recycle={ false }
       />
 
-      <div className='endgame__container'>
+      <div className='portfolio'>
         <DisplayText 
           element='h1'
           size='extraLarge'>
@@ -124,7 +125,7 @@ const DisplayPortfolio = (props) => {
             target='_blank' rel="noopener noreferrer">JSong Fitness</a></li>
         </ul>
 
-          <div className='endgame__buttons'>
+          <div className='portfolio__links'>
             <a href='https://linkedin.com/in/henryliang2' 
               target='_blank' rel="noopener noreferrer"><LinkedIn style={{ fontSize: 48 }}/></a>
             <a href='https://github.com/henryliang2' 
@@ -133,15 +134,15 @@ const DisplayPortfolio = (props) => {
 
           </div>
 
-        <div className='nomination__submit-container'>
-          <div className='nomination__submit-button'
+        <div className='submit'>
+          <div className='submit__button'
             onClick={() => {
               props.setIsSubmitted(false);
             }} 
             >
             ← Back to your Nominations
           </div>
-          <div className='nomination__submit-button'
+          <div className='submit__button'
             onClick={() => {
               props.setNominatedMovies([]);
               props.setIsSubmitted(false);

@@ -34,14 +34,14 @@ const MovieCard = (props) => {
 
       { // Replace with loading spinner if isLoading
         isLoading &&
-        <div className='moviecard__placeholder'>
+        <div className='card__spinner'>
           <Spinner size="small" color="teal" accessibilityLabel="Loading image .." />
         </div>
       }
 
       { // Show title over generic image if no image
         (props.posterUrl === 'N/A' || hasError === true) && 
-          <div className='nomination__poster-title'>
+          <div className='card__generic-title'>
             <Heading>{ props.title }</Heading>
           </div>
       }

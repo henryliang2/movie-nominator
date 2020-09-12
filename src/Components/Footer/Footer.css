@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
-.footer__container {
+.footer {
   margin-left: 24px;
   margin-bottom: 24px;
   max-width: 200px;
 }
 
-.footer {
+.footer__text {
   font-family: 'Roboto', 'Arial', 'Helvetica';
   font-size: 1.2em;
   line-height: 1.4em;
@@ -14,19 +14,19 @@
   display: inline-block;
 }
 
-.footer__title {
+.footer__text--title {
   color: #000000;
   font-weight: 500;
   margin-bottom: 6px;
 }
 
-.footer__link {
+.footer__text--link {
   text-decoration: none;
   color: #888;
   font-weight: 300;
   display: block;
 }
 
-.footer__link:hover {
+.footer__text--link:hover {
   color: #41295a;
 }

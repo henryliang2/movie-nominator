@@ -1,4 +1,4 @@
-.moviecard__image {
+.card__image {
   width: 160px;
   height: 240px;
   object-fit: cover;
@@ -6,47 +6,27 @@
   opacity: 0;
 }
 
-.moviecard__poster-title {
+.card__image--shadow {
+  -webkit-box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
+  -moz-box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
+  box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
+}
+
+.card__spinner {
+  width: 160px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__generic-title {
+  cursor: default;
+  text-align: center;
   color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.moviecard__loading-spinner {
-  width: 160px;
-  height: 240px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.moviecard__overlay {
-  cursor: default;
-  position: absolute;
-  z-index: 2;
-  top: 20px;
-  left: 20px;
-
-  width: 160px;
-  height: 240px;
-
-  background-color:rgba(0, 0, 0, 0.8);
-
-  display: flex; /* change to flex on hover */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  opacity: 0;
-}
-
-.moviecard__placeholder {
-  width: 160px;
-  height: 240px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-height: 240px;
 }

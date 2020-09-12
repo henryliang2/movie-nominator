@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-.nomination__container {
+.nominations__container {
   display: grid;
   /* Each movie card poster takes up unit of width */
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin-bottom: 24px;
 }
 
-.nomination__header {
+.nominations__header {
   display: block;
   position: relative;
   padding: 24px;
@@ -16,62 +16,46 @@
   color: white;
 }
 
-.nomination__moviecard {
+.nominations__ribbon { /* after 5th nomination  */
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+
+.nominated {
   padding-top: 36px;
   text-align: center;
 }
 
-.nomination__moviecard > p {
+.nominated > p {
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 500;
   color: white;
 }
 
 @media only screen and (max-width: 1024px) {
-  .nomination__container { 
+  .nominations__container { 
     grid-template-columns: 1fr 1fr;
     justify-content: center;
   }
 
-  .nomination__moviecard {
+  .nominated {
     margin: 12px 24px;
   }
 
-  .nomination__moviecard:nth-child(5) {
+  .nominated:nth-child(5) {
     grid-column-end: span 2;
   }
 }
 
-.nomination__poster-container {
+.nominated__image-wrapper {
   position: relative;
   display: inline-block;
   margin-bottom: 6px;
 }
 
-.nomination__poster-image {
-  margin: 0;
-  width: 160px;
-  height: 240px;
-  object-fit: cover;
-  -webkit-box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
-  -moz-box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
-  box-shadow: 6px 6px 12px 0px rgba(18,18,18,0.7);
-  display: none;
-}
-
-.nomination__poster-title {
-  cursor: default;
-  text-align: center;
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: 240px;
-}
-
 /*remove-button is hidden by default*/
-.nomination__remove-button {
+.nominated__remove-button {
   position: absolute;
   top: -12px;
   right: -12px;
@@ -82,17 +66,17 @@
 /* On smaller screens that could be touchscreen,
 always display remove-button */
 @media only screen and (max-width: 1000px) {
-  .nomination__remove-button {
+  .nominated__remove-button {
     display: block;
   }
 }
 
 /* Display remove-button when hovering over moviecard */
-.nomination__moviecard:hover .nomination__remove-button {
+.nominated:hover .nominated__remove-button {
   display: block;
 }
 
-.nomination__submit-container {
+.submit {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +85,7 @@ always display remove-button */
   padding-bottom: 20px;
 }
 
-.nomination__submit-button {
+.submit__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,17 +104,11 @@ always display remove-button */
   cursor: pointer;
 }
 
-.nomination__submit-button:hover { 
-  background-color: #ccc;
-}
+  .submit__button:hover { 
+    background-color: #ccc;
+  }
 
-.nomination__ribbon-final { /* image (svg) */
-  max-width: 800px;
-  display: block;
-  margin: 0 auto;
-}
-
-.endgame__container {
+.portfolio {
   display: flex;
   flex-direction: column;
   padding: 120px;
@@ -138,12 +116,16 @@ always display remove-button */
 }
 
 @media only screen and (max-width: 1024px) {
-  .endgame__container { 
+  .portfolio { 
     padding: 24px;
   }
 }
 
-.endgame__container > p, ul {
+.portfolio > p:first-of-type {
+  margin-top: 24px;
+}
+
+.portfolio > p, ul {
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-weight: 300;
   font-size: 1.6em;
@@ -151,25 +133,21 @@ always display remove-button */
   list-style-type: square;
 }
 
-li > a, .endgame__buttons > a {
+.portfolio__links {
+  margin: auto;
+  max-width: 400px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-around;
+}
+
+li > a, .portfolio__links > a {
   color: white;
   text-decoration: none;
   padding: 12px;
   cursor: pointer;
 }
 
-li > a:hover, .endgame__buttons > a:hover {
+li > a:hover, .portfolio__links > a:hover {
   color: violet;
-}
-
-.endgame__container > p:first-of-type {
-  margin-top: 24px;
-}
-
-.endgame__buttons {
-  margin: auto;
-  max-width: 400px;
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: space-around;
 }

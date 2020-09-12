@@ -12,12 +12,12 @@ const Footer = () => {
   ]
 
   return (
-    <div className='footer__container'>
-      <p className='footer footer__title'>Packages Used</p>
+    <div className='footer'>
+      <p className='footer__text footer__text--title'>Packages Used</p>
       { links.map((link, i) => {
           return (
             <a 
-              className='footer footer__link' 
+              className='footer__text footer__text--link' 
               href={ link[1] }
               key={i}
               >

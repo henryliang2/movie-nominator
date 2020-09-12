@@ -1,4 +1,4 @@
-.signin__container {
+.auth {
   min-height: 160px;
   display: flex;
   justify-content: center;
@@ -6,7 +6,15 @@
   flex-direction: column;
 }
 
-.signin__button {
+.auth__buttons-wrapper {
+  min-height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth__button {
   display: flex;
   align-items: center;
   
@@ -24,46 +32,45 @@
   cursor: pointer;
 }
 
-  .as-user {
-    background-color: #4285F4;
-    color: white;
-  }
+.auth__button--google {
+  background-color: #4285F4;
+  color: white;
+}
 
-  .as-user:hover {
-    background-color: #5f94ed;
-  }
-
-  .as-guest {
-    justify-content: center;
-    font-size: 1.1em;
-    color: #1c2260;
-    border: 1px solid #1c2260;
-  }
-
-  .as-guest:hover {
-    background-color: #ddd;
-  }
-
-.signin__text {
+.auth__button--google > p {
   width: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 1.1em;
 }
 
-#signin__description {
-  color: #888;
-  text-align: center;
+.auth__button--google:hover {
+  background-color: #5f94ed;
+}
+
+.auth__button--guest {
+  justify-content: center;
+  font-size: 1.1em;
+  color: #1c2260;
+  border: 1px solid #1c2260;
+}
+
+.auth__button--guest:hover {
+  background-color: #ddd;
+}
+
+#auth__text--description {
   display: inline;
   max-width: 260px;
-}
-
-#signin__processing {
+  text-align: center;
   color: #888;
-  text-align: center;
 }
 
-#signin__error {
-  color: red;
+#auth__text--processing {
   text-align: center;
+  color: #888;
+}
+
+#auth__text--error {
+  color: red;
 }

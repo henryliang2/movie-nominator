@@ -1,18 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.moviecard__container {
+.returnlist__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 960px;
+  margin: auto;
+}
+
+.returnlist__loading-spinner {
+  margin: 48px auto;
+}
+
+.returned {
   display: inline-block;
   position: relative;
   padding: 20px;
 }
 
-.moviecard__container > img, .poster__blank {
+.returned > img {
   -webkit-box-shadow: 5px 5px 12px 0px rgba(170,170,170,1);
   -moz-box-shadow: 5px 5px 12px 0px rgba(170,170,170,1);
   box-shadow: 5px 5px 12px 0px rgba(170,170,170,1);
 }
 
-.moviecard__overlay:hover {
+.returned__overlay {
+  cursor: default;
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+
+  width: 160px;
+  height: 240px;
+
+  background-color:rgba(0, 0, 0, 0.8);
+
+  display: flex; /* change to flex on hover */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  opacity: 0;
+}
+
+.returned__overlay:hover {
   opacity: 1.0;
   -webkit-transition: opacity 0.2s ease-in-out;
   -moz-transition: opacity 0.2s ease-in-out;
@@ -21,22 +54,22 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.moviecard__overlay .Polaris-Button {
+.returned__overlay .Polaris-Button {
   display: none;
 }
 
-.moviecard__overlay:hover .Polaris-Button {
+.returned__overlay:hover .Polaris-Button {
   display: block;
 }
 
 @media only screen and (max-width: 1024px) {
-  .moviecard__overlay:hover .Polaris-Button {
+  .returned__overlay:hover .Polaris-Button {
     position: absolute;
     bottom: -36px;
   }
 }
 
-.moviecard__movie-title {
+.returned__title {
   display: block;
   font-family: 'Roboto', 'Arial', 'sans-serif';
   font-size: 1.2em;
@@ -46,29 +79,11 @@
   padding: 12px;
 }
 
-.moviecard__movie-title-small {
-  display: block;
-  font-family: 'Roboto', 'Arial', 'sans-serif';
+.returned__title--small {
   font-size: 1em;
-  line-height: 1.1em;
-  color: white;
-  margin-bottom: 20px;
-  padding: 12px;
 }
 
-.moviecard__nominate-unable {
+.returned__nominate-unable {
   font-weight: bold;
   color: white;
-}
-
-.returnedlist__container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 960px;
-  margin: auto;
-}
-
-.returnedlist___loading-spinner {
-  margin: 48px auto;
 }

@@ -154,7 +154,7 @@ function App() {
       {
         // ----- Nominations Container -----
       }
-      <div className='layout__container' id='nomination-container' ref={ nominationsContainer }>
+      <div className='layout' id='nomination-container' ref={ nominationsContainer }>
         <div className='layout__section'>
 
           { // Display nominated movies if there are any, otherwise display welcome message
@@ -165,8 +165,8 @@ function App() {
                 setNominatedMovies={ setNominatedMovies }
                 isSignedIn={ isSignedIn }
             />
-            : <div className='welcome__container'>
-                <img id='shoppies-logo' 
+            : <div className='welcome'>
+                <img className='welcome__logo' 
                   alt='Shoppies Award Logo' 
                   src={process.env.PUBLIC_URL + 'award_logo.svg'} />
                 <div className='welcome__title'>It's time to nominate your favourite films.</div>
@@ -178,7 +178,7 @@ function App() {
       {
         // ----- Searchbox and API Response container -----
       }
-      <div className='layout__container'>
+      <div className='layout'>
         <div className='layout__section'>
 
           {// Display signin buttons ONLY IF not signed in
@@ -193,10 +193,10 @@ function App() {
           {// Display Searchbox and Returned movies ONLY IF there are fewer than 5 movies nominated
             (nominatedMovies.length < 5 && isSignedIn) &&
             <React.Fragment>
-              <div className='searchfield__header'>
+              <div className='search__header'>
                 <DisplayText> Please nominate five movies for this year's awards.</DisplayText>
               </div>
-              <form id='searchfield'
+              <form className='search__form'
                 onSubmit={ (event) => {
                   event.preventDefault();
                   runOmdbApi(); }}
@@ -218,7 +218,7 @@ function App() {
                     nominateMovie={ nominateMovie }
                     awaitingApiResponse={ awaitingApiResponse }
                   />
-                : <div className='returnedlist__search-failed'>No movies found with that search =(</div>
+                : <div className='search__failed-message'>No movies found with that search =(</div>
               }
             </React.Fragment>
           }

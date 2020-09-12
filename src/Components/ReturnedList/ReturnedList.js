@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Spinner } from '@shopify/polaris';
 import MovieCard from '../MovieCard/MovieCard'
+import '../MovieCard/MovieCard.css'
 import './ReturnedList.css'
 
 const ReturnedList = (props) => {
@@ -14,12 +15,12 @@ const ReturnedList = (props) => {
   }, [props.nominatedMovies])
   
   return (
-    <div className='returnedlist__container'>
+    <div className='returnlist__container'>
 
       { //  if awaiting Api Response, show spinner
         props.awaitingApiResponse
 
-        ? <div className='returnedlist___loading-spinner'>
+        ? <div className='returnlist__loading-spinner'>
             <Spinner size="large" color="teal" accessibilityLabel="Loading ..." />
           </div>
       
@@ -27,9 +28,9 @@ const ReturnedList = (props) => {
         : <React.Fragment>
           { props.returnedMovies.map((movie, i) => {
             return (
-              <div key={i} className='moviecard__container'>
+              <div key={i} className='returned'>
                 <MovieCard
-                  classNames={'moviecard__image'}
+                  classNames={'card__image'}
                   id={`returned-image-${props.index}`}
                   title={ movie.Title }
                   year={ movie.Year }
@@ -39,10 +40,10 @@ const ReturnedList = (props) => {
                 
                 { // Overlay that darkens and displays title + year onMouseOver    
                 }
-                <div className='moviecard__overlay'>
-                  <p className={ movie.Title.length > 40 
-                    ? 'moviecard__movie-title-small' 
-                    : 'moviecard__movie-title'
+                <div className='returned__overlay'>
+                  <p className={ movie.Title.length < 40 
+                    ? 'returned__title' 
+                    : 'returned__title returned__title--small'
                   }>
                     { movie.Title }<br />
                     { `(${movie.Year})` }
@@ -51,10 +52,10 @@ const ReturnedList = (props) => {
                   { // display nominate button only if not already nominated 
                     movieIdArray.includes(movie.imdbID)
 
-                    ? <p className='moviecard__nominate-unable'>Already Nominated!</p>
+                    ? <p className='returned__nominate-unable'>Already Nominated!</p>
 
                     : <Button primary
-                        className='moviecard__nominate-button Polaris-Button'
+                        className='Polaris-Button'
                         onClick={() => {props.nominateMovie(i)}}
                         size='slim'>
                         Nominate
