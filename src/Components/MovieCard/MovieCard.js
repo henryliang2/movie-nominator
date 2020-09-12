@@ -34,7 +34,7 @@ const MovieCard = (props) => {
 
       { // Replace with loading spinner if isLoading
         isLoading &&
-        <div className='card__spinner'>
+        <div className='card__spinner fade-in'>
           <Spinner size="small" color="teal" accessibilityLabel="Loading image .." />
         </div>
       }
