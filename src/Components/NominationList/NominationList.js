@@ -71,8 +71,8 @@ const DisplayNominations = (props) => {
                       color={ (props.hoveredIcon === i) ? 'red' : 'inkLighter' } />
                   </div>
                 </div>
-                <p>{movie.Title}</p>
-                <p>({movie.Year})</p>
+                <p className='nominated__text fade-in'>{movie.Title}</p>
+                <p className='nominated__text fade-in'>({movie.Year})</p>
               </div>
           })
         }
