@@ -54,7 +54,7 @@ const DisplayNominations = (props) => {
             return <div className='nominated' key={i}>
                 <div className='nominated__image-wrapper'>
                   <MovieCard
-                    classNames={'card__image card__image--shadow'}
+                    classNames={'card__image card__image--large card__image--shadow'}
                     id={`nominated-image-${i}`}
                     title={ movie.Title }
                     posterUrl={ movie.Poster }
