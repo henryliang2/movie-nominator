@@ -63,7 +63,10 @@ const DisplayNominations = (props) => {
                   />
 
                   <div className='nominated__remove-button fade-in'
-                    onClick={ () => { props.removeNomination(i) }}
+                    onClick={ () => { 
+                      props.removeNomination(i);
+                      props.setHoveredIcon(-1); 
+                    }}
                     onMouseEnter={() => { props.setHoveredIcon(i) }}
                     onMouseLeave={() => { props.setHoveredIcon(-1) }}
                     >
