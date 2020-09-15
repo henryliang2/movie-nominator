@@ -16,28 +16,31 @@ This app was designed and built with user experience and usability principles in
     
 **Data Model**  
   
-The Shoppies Nominator uses a document database for storage of each user's nominated movies. See below for an example of a document:
+The Shoppies Nominator uses a document database for storage of each user's nominated movies. See below for the structure of the database:
   
 ```
 {
-  "uid": "lABAVxR1WUYCSQo4wwuRIXRNMwp2",
-  "email": "henryliang@alumni.ubc.ca",
-  "nominatedMovies": [
-    {
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg",
-      "Title": "The Martian",
-      "Type": "movie",
-      "Year": "2015",
-      "imdbID": "tt3659388"
-    },
-    {
-      "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-      "Title": "Inception",
-      "Type": "movie",
-      "Year": "2010",
-      "imdbID": "tt1375666"
+  "users": {
+    "lABAVxR1WUYCSQo4wwuRIXRNMwp2": {
+      "email": "example@gmail.com",
+      "nominatedMovies": [
+        {
+          "Title": "The Martian",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg",
+          "Type": "movie",
+          "Year": "2015",
+          "imdbID": "tt3659388"
+        },
+        {
+          "Title": "Inception",
+          "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+          "Type": "movie",
+          "Year": "2010",
+          "imdbID": "tt1375666"
+        }
+      ]
     }
-  ]
+  }
 }
 ```
   
