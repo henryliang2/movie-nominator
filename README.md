@@ -1,7 +1,5 @@
 ## Shoppies Nominator App
-It's time to nominate your favourite films for this year's awards!  This app was made for the Winter 2021 UX Developer Intern & Web Developer Intern Challenge.
-  
-Made using ReactJS and Firebase for authentication and database services.  
+It's time to nominate your favourite films for this year's awards!  This app was made for the Winter 2021 UX Developer Intern & Web Developer Intern Challenge. Made using ReactJS and Firebase for authentication and database services.  
   
 See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://shoppies-henryliang2.netlify.app/)
 
@@ -9,10 +7,39 @@ See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://sh
   
 ![](public/demo.gif)
   
-## Design Notes  
+## Design Notes   
+**User Experience**  
+  
 This app was designed and built with user experience and usability principles in mind. I made sure to focus on simplicity and providing the user with each new task in a clear and stepwise fashion. The UI elements were made to be intuitive and easy for the user to discover organically. UI elements are also removed when appropriate in order to limit any confusion.  After the user nominates their final movie, the interface changes stylistically to imbue a strong sense of gravity in the user's actions.
     
 ![](public/ux-flow.png)
+    
+**Data Model**  
+  
+The Shoppies Nominator uses a document database for database storage. See below for an example of a document:
+  
+```
+{
+  "uid": "lABAVxR1WUYCSQo4wwuRIXRNMwp2",
+  "email": "henryliang@alumni.ubc.ca",
+  "nominatedMovies": [
+    {
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg",
+      "Title": "The Martian",
+      "Type": "movie",
+      "Year": "2015",
+      "imdbID": "tt3659388"
+    },
+    {
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+      "Title": "Inception",
+      "Type": "movie",
+      "Year": "2010",
+      "imdbID": "tt1375666"
+    }
+  ]
+}
+```
   
 ## Challenge Details
 **Challenge Outline**  
