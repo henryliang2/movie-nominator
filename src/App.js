@@ -91,15 +91,13 @@ function App() {
   }
 
   const onSignIn = async () => {
-
     setSignInMessage('processing'); // display 'processing sign-in' message
-
     try {
       const result = await firebase.auth().signInWithPopup(provider)
       await setUser(result.user);
 
       // get nominations from database and set as nominatedMovies state
-      const databaseRef = db.collection(result.user.uid).doc('nominatedMovies');
+      const databaseRef = db.collection('users').doc(result.user.uid);
       const returnRef = await databaseRef.get()
       if (returnRef.exists) {
         const returnedData = returnRef.data();
@@ -130,8 +128,11 @@ function App() {
   // update database every time nominatedMovies state is changed
   useEffect(() => {
     if (isSignedIn && user) {
-      const databaseRef = db.collection(user.uid).doc('nominatedMovies');
-      databaseRef.set({ nominatedMovies: nominatedMovies })
+      const databaseRef = db.collection('users').doc(user.uid);
+      databaseRef.set({ 
+        email: user.email,
+        nominatedMovies: nominatedMovies 
+      })
     }
   }, [nominatedMovies]) // eslint-disable-line react-hooks/exhaustive-deps
 
