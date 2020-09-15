@@ -10,13 +10,13 @@ See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://sh
 ## Design Notes   
 **User Experience**  
   
-This app was designed and built with user experience and usability principles in mind. I made sure to focus on simplicity and providing the user with each new task in a clear and stepwise fashion. The UI elements were made to be intuitive and easy for the user to discover organically. UI elements are also removed when appropriate in order to limit any confusion.  After the user nominates their final movie, the interface changes stylistically to imbue a strong sense of gravity in the user's actions.
+This app was designed and built with user experience and usability principles in mind. I made sure to focus on simplicity, minimalism, and providing the user with each new task in a clear and stepwise fashion. The UI elements were made to be intuitive and easy for the user to discover organically. UI elements are also removed when appropriate in order to limit any confusion.  After the user nominates their final movie, the interface changes stylistically to imbue a strong sense of gravity in the user's actions.
     
 ![](public/ux-flow.png)
     
 **Data Model**  
   
-The Shoppies Nominator uses a document database for database storage. See below for an example of a document:
+The Shoppies Nominator uses a document database for storage of each user's nominated movies. See below for an example of a document:
   
 ```
 {
