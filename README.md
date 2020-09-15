@@ -16,7 +16,7 @@ This app was designed and built with user experience and usability principles in
     
 **Data Model**  
   
-The Shoppies Nominator uses a document database for storage of each user's nominated movies. See below for the structure of the database:
+The Shoppies Nominator uses a document oriented-model for storage of each user's nominated movies.
   
 ```
 {
