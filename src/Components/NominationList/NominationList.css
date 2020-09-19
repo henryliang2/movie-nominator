@@ -35,17 +35,34 @@
 
 @media only screen and (max-width: 1024px) {
   .nominations__container { 
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    margin-bottom: 12px;
+  }
+
+  .nominations__header {
+    padding: 12px;
+    font-size: 2em;
+  }
+
+  .nominations__container::-webkit-scrollbar {
+    display: none;
   }
 
   .nominated {
-    margin: 12px 24px;
+    display: inline-block;
+    padding: 12px 12px;
+    margin: 12px;
+    scroll-snap-align: center;
   }
 
-  .nominated:nth-child(5) {
-    grid-column-end: span 2;
+  .nominated:last-of-type {
+    padding-right: 140px;
   }
+
 }
 
 .nominated__image-wrapper {
@@ -65,7 +82,7 @@
 
 /* On smaller screens that could be touchscreen,
 always display remove-button */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1024px) {
   .nominated__remove-button {
     display: block;
   }
@@ -104,9 +121,16 @@ always display remove-button */
   cursor: pointer;
 }
 
-  .submit__button:hover { 
-    background-color: #ccc;
+@media only screen and (max-width: 1024px) {
+  .submit__button {
+    min-width: 300px;
+    font-size: 1.2em;
   }
+}
+
+.submit__button:hover { 
+  background-color: #ccc;
+}
 
 .portfolio {
   display: flex;

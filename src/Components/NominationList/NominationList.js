@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 import MovieCard from './../MovieCard/MovieCard';
 import '../MovieCard/MovieCard.css';
@@ -30,6 +30,7 @@ const NominationList = (props) => {
         hoveredIcon = { hoveredIcon }
         setHoveredIcon = { setHoveredIcon }
         setIsSubmitted = { setIsSubmitted }
+        isSignedIn = { props.isSignedIn }
       />
   );
   
@@ -37,8 +38,26 @@ const NominationList = (props) => {
 
 // this route houses all of the nominations and is the default route
 const DisplayNominations = (props) => {
+
+  const nominationsContainer = useRef(null)
+
+  // force scroll effects for mobile
+  useEffect(() => { 
+    
+    // scroll to latest nomination after each nomination added
+    if(props.nominatedMovies.length < 5) {
+      nominationsContainer.current.scrollLeft = nominationsContainer.current.scrollWidth;
+    } 
+
+    // scroll to zero in window after every nomination
+    if(window.innerWidth < 900) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); 
+    }
+  }, [props.nominatedMovies])
+
   return (
     <React.Fragment>
+
       <div className='nominations__header'>
         { props.nominatedMovies.length < 5 
           ? 'My Nominations' 
@@ -48,7 +67,7 @@ const DisplayNominations = (props) => {
         }
       </div> 
 
-      <div className='nominations__container'>
+      <div className='nominations__container' ref={ nominationsContainer }>
         {
           props.nominatedMovies.map((movie, i) => {
             return <div className='nominated' key={i}>
@@ -79,18 +98,17 @@ const DisplayNominations = (props) => {
               </div>
           })
         }
-
       </div>
 
       { // if there are 5 nominations, show continue button
-        ( props.nominatedMovies.length === 5 ) && 
-        <div className='submit'>
-          <div onClick={() => { 
-            props.setIsSubmitted(true);
-            window.scrollTo(0, 0); 
-            }} className='submit__button' >
-            Continue →</div>
-        </div>
+      ( props.nominatedMovies.length === 5 ) && 
+      <div className='submit'>
+        <div onClick={() => { 
+          props.setIsSubmitted(true);
+          window.scrollTo({ top: 0, behavior: 'smooth' }); 
+          }} className='submit__button' >
+          Continue →</div>
+      </div>
       }
 
     </React.Fragment>
