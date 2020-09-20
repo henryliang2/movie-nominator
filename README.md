@@ -5,7 +5,9 @@ See the live hosted app at [https://shoppies-henryliang2.netlify.app](https://sh
 
 ## Demonstration  
   
-![](public/demo.gif)
+Desktop | Mobile
+------------ | -------------
+![](public/demo.gif) | ![](public/demo-mobile.gif)
   
 ## Design Notes   
 **User Experience**  
